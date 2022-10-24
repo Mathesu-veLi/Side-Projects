@@ -1,0 +1,9 @@
+Objetivo
+    Criar um site para apresentar a série Stranger Things para os não conhecedores
+
+Especificações:
+    1. Head com icone
+    2. Imagem de fundo da série
+    3. Titulo da série centralizado com fonte da série
+    4. Lista de temporadas com foto-link para treiler da temporada
+    5. Rodapé com link do Github, email e pseudônimo

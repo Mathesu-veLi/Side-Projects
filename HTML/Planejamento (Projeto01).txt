@@ -1,7 +1,0 @@
-Objetivo
-    Criar um site para apresentar a serie Stranger Things para os não conhecedores
-
-Especificações:
-    1. Head com icone
-    2. Abertura da serie na inicialização do site
-    3. 
