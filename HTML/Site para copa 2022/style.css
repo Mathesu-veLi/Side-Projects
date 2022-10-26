@@ -47,7 +47,7 @@ a:link
 
 #navbar
 {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
     background-color: rgba(62, 78, 88);
 }
@@ -55,14 +55,14 @@ a:link
 #navbar li
 {
     display: inline;
-    font-size: 20px;
+    font-size: 25px;
 }
 
 #navbar li a
 {
     color: white;
     padding: 20px;
-    transition: font-size 0.5s;
+    
     display: inline-block;
 }
 
@@ -70,6 +70,7 @@ a:link
 {   
     
     color: rgb(34, 159, 218);
-    font-size: 30; 
+    font-size: 30px; 
+    transition: font-size 0.5s;
     text-decoration: overline;
 }
