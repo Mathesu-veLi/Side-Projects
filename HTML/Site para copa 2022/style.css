@@ -1,0 +1,75 @@
+.bodySobre
+{
+    background-color: black;
+    color: darkred;
+    font-size: 35px;
+}
+
+.bodyCont
+{
+    background: url('https://images.hdqwalls.com/download/code-syntax-dark-minimal-4k-mr-2560x1440.jpg') center center no-repeat fixed;
+    background-size: cover;
+    color: white;
+    font-size: 35px;
+}
+
+@font-face 
+{
+    font-family: Raleway;
+    src: url(Fonts/Raleway-Regular.ttf);
+}
+
+*
+{
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', Helvetica, sans-serif;
+}
+
+.container
+{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+a:link
+{
+    color: white
+}
+
+#navbar
+{
+    list-style-type: none;
+    padding: 0;
+    background-color: rgba(62, 78, 88);
+}
+
+#navbar li
+{
+    display: inline;
+    font-size: 20px;
+}
+
+#navbar li a
+{
+    color: white;
+    padding: 20px;
+    transition: font-size 0.5s;
+    display: inline-block;
+}
+
+#navbar li a:hover
+{   
+    
+    color: rgb(34, 159, 218);
+    font-size: 30; 
+    text-decoration: overline;
+}
