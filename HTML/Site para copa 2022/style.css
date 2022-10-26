@@ -1,7 +1,8 @@
 .bodySobre
 {
-    background-color: black;
-    color: darkred;
+    background: url(Pictures/Background\ 7M2\ Sobre.jpeg) center center no-repeat fixed;
+    background-size: cover;
+    color: rgb(218, 218, 218);
     font-size: 35px;
 }
 
@@ -13,10 +14,26 @@
     font-size: 35px;
 }
 
+.bodyCurio
+{
+
+}
+
 @font-face 
 {
     font-family: Raleway;
-    src: url(Fonts/Raleway-Regular.ttf);
+    src: url(Fonts/Raleway-Regular.ttf) format('truetype');
+
+    font-family: "Just Squash";
+    src: url(Fonts/Just-Squash.otf) format('opentype');
+
+    font-family: Comfortaa;
+    src: url(Fonts/Comfortaa_Thin.ttf);
+}
+
+h1
+{
+    font-family: 'Raleway', Helvetica, sans-serif;
 }
 
 *
@@ -24,7 +41,7 @@
     margin: 0 auto;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Raleway', Helvetica, sans-serif;
+    font-family: 'Comfortaa', Helvetica, sans-serif;
 }
 
 .container
@@ -43,6 +60,11 @@ a
 a:link
 {
     color: white
+}
+
+.sobre
+{
+    background-color: rgb(59, 59, 59);
 }
 
 #navbar
