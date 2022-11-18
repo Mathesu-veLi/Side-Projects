@@ -9,11 +9,10 @@ bC = '#3f3f3f'
 
 
 def flood():
-    
-    if msg.get() != '' and vezes.get() != '' and vezes.get != '0':
+    if msg.get() != '' and vezes.get() != '' and vezes.get() != '0':
+        f2 = Label(master= janela, text='Aperte F2 para começar a flodar!', fg='green', bg=bC)
+        f2.pack(side=BOTTOM)
         while True:
-            f2 = Label(master= janela, text='Aperte F2 para começar a flodar!', fg='green', bg=bC)
-            f2.pack(side=BOTTOM)
             if keyboard.is_pressed('f2'):
                 for c in range(0, int(vezes.get()) + 1):
                     pyautogui.write(f'{msg.get()} {c}')
@@ -21,6 +20,7 @@ def flood():
                     if keyboard.is_pressed('esc'):
                         break
                 break
+        f2.destroy()
     else:
         if msg.get() == '' or msg.get() == None:
             tkinter.messagebox.showerror('Error!', 'Digite uma mensagem para começar a enviar!')
