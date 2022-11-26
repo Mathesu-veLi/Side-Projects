@@ -9,9 +9,15 @@ bC = '#3f3f3f'
 
 
 def flood():
+    global f2
     if msg.get() != '' and vezes.get() != '' and vezes.get() != '0':
-        f2 = Label(master= janela, text='Aperte F2 para começar a flodar!', fg='green', bg=bC)
-        f2.pack(side=BOTTOM)
+        try:
+            f2.destroy()
+            f2 = Label(master= janela, text='Aperte F2 para começar a flodar!', fg='green', bg=bC)
+        except:
+            f2 = Label(master= janela, text='Aperte F2 para começar a flodar!', fg='green', bg=bC)
+        finally:
+            f2.pack(side=BOTTOM)
         while True:
             if keyboard.is_pressed('f2'):
                 for c in range(0, int(vezes.get()) + 1):
@@ -20,7 +26,6 @@ def flood():
                     if keyboard.is_pressed('esc'):
                         break
                 break
-        f2.destroy()
     else:
         if msg.get() == '' or msg.get() == None:
             tkinter.messagebox.showerror('Error!', 'Digite uma mensagem para começar a enviar!')
