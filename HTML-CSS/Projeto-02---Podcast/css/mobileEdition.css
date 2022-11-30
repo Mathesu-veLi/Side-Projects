@@ -1,0 +1,47 @@
+@media screen and (max-width: 550px) {
+    .prefs h1
+    {
+        font-size: 30px;
+        line-height: auto;
+    }
+
+    .prefs ol
+    {
+        margin: 50px;
+        padding: 10px;
+    }
+
+    .title h1
+    {
+        font-size: 30px;
+    }
+
+    .title h1:hover
+    {
+        font-size: 35px;
+    }
+
+    .prefs
+    {
+        background: url(images/mobile/guns.png) center center no-repeat fixed;
+        background-size: cover;
+    }
+
+    .sobre{
+        height: 800px;
+        background: url(images/mobile/guns.jpg) center center no-repeat fixed;
+        background-size: cover;
+    }
+
+    .sd .sobre
+    {
+        background: url(images/mobile/met.jpg) center center no-repeat fixed;
+        background-size: cover;
+    }
+
+    .diwk .sobre
+    {
+        background: url(images/mobile/arctic.jpg) center center no-repeat fixed;
+        background-size: cover;
+    }
+}

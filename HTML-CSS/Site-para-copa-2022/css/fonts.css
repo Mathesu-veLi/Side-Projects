@@ -1,0 +1,63 @@
+@font-face
+{
+    font-family: JustSquash;
+    src: url(Fonts/Just-Squash.otf) ;
+}
+
+@font-face {
+    font-family: Comfortaa;
+    src: url(Fonts/Comfortaa_Thin.ttf) format('truetype');
+}
+
+@font-face
+{
+    font-family: Raleway;
+    src: url(Fonts/Raleway-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: BabyAletha;
+    src: url(Fonts/Baby\ Aletha.otf) format('opentype');
+}
+
+@font-face 
+{
+    font-family: CaviarDreams;
+    src: url(Fonts/CaviarDreams/CaviarDreams_Bold.ttf) format('truetype');
+}
+
+@font-face
+{
+    font-family: CL;
+    src: url(Fonts/CL/Champagne\ &\ Limousines\ Bold.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: CLI;
+    src: url(Fonts/CL/Champagne\ &\ Limousines\ Italic.ttf);
+}
+
+@font-face {
+    font-family: Sky;
+    src: url(Fonts/Skyer.otf);
+}
+
+@font-face {
+    font-family: SIMPLIFICA;
+    src: url(Fonts/SIMPLIFICA.ttf);
+}
+
+@font-face {
+    font-family: Ailerons;
+    src: url(Fonts/Ailerons-Typeface.otf);
+}
+
+@font-face {
+    font-family: JS;
+    src: url(Fonts/JosefinSans/JosefinSans-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Milgran;
+    src: url(Fonts/MilgranRegular.ttf);
+}

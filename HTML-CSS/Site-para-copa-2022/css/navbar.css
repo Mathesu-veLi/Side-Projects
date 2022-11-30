@@ -1,0 +1,41 @@
+@import url(style.css);
+@import url(animations.css);
+#navbar
+{
+    list-style: none;
+    padding: 0 auto;
+    margin: 0 auto;
+    background-color: rgba(62, 78, 88);
+}
+
+#navbar li
+{
+    display: inline-block;
+    font-size: 25px;
+    
+}
+
+#navbar li a
+{
+    color: white;
+    padding: 20px;
+    display: inline-block;
+    font-family: Raleway;
+    animation: text-shadow-drop-center 1s infinite alternate-reverse both;
+    border-color: rgba(36, 131, 255, 0.3);
+    border-radius: 10px;
+    border-style: groove;
+}
+
+#navbar li a:hover
+{   
+    color: rgb(34, 159, 218);
+    font-size: 30px; 
+    transition: font-size 0.5s;
+    text-decoration: overline;
+    animation: focus-in-expand 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both, text-shadow-drop-center 1s infinite alternate-reverse both;
+    background-color: rgba(36, 131, 255, 0.2);
+    transition: background-color 2s;
+    border-radius: 20px;
+    border-color: rgba(36, 131, 255, 0.1);
+}

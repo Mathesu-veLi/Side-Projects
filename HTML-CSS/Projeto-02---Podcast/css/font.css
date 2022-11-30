@@ -1,0 +1,29 @@
+@font-face {
+    font-family: STF;
+    src: url(Fonts/BenguiatStd-Medium.otf);
+}
+
+@font-face {
+    font-family: Comfortaa;
+    src: url(Fonts/Comfortaa-Light.ttf);
+}
+
+@font-face {
+    font-family: CL;
+    src: url(Fonts/Champagne\ &\ Limousines.ttf);
+}
+
+@font-face {
+    font-family: MordernSans;
+    src: url(Fonts/ModernSans-Light.otf);
+}
+
+@font-face {
+    font-family: Raleway;
+    src: url(Fonts/Raleway-Regular.ttf);
+}
+
+@font-face {
+    font-family: Airelons;
+    src: url(Fonts/Ailerons-Typeface.otf);
+}
