@@ -6,8 +6,16 @@
 }
 
 main{
-    background: url(img/background.jpg) center center no-repeat;
+    padding: 8vh;
+    background: url(img/background.jpg) center center no-repeat fixed;
     background-size: cover;
     height: 92vh;
+}
+
+@media screen and (max-width: 999px) {
+    main
+    {
+        background: url(img/mobile-wallpaper.jpg) center center no-repeat fixed;
+    }
 }
 
