@@ -3,9 +3,16 @@ a
     text-decoration: none;
     color: white;
     font-size: 25px;
-    transition: .5s;
     position: relative;
+    opacity: 1;
     font-family: Lovelyn;
+    transition: .5s;
+}
+
+.nav-list a:hover
+{
+    opacity: .7;
+    color: rgb(255, 203, 210);
 }
 
 .nav-list a::before
@@ -13,18 +20,14 @@ a
     content: '';
     border: 1px solid black;
     position: absolute;
-    left: -5%;
-    top: -2px;
+    top: -10px;
+    left: -5px;
     width: 0%;
     opacity: 0;
     transition: .5s;
 }
 
-.nav-list a:hover
-{
-    font-size: 30px;
-    opacity: 0.7;
-}
+
 
 .nav-list a:hover::before
 {
@@ -46,6 +49,8 @@ nav{
     align-items: center;
     background-color: #23232e;
     height: 8vh;
+    position: fixed;
+    width: 100%;
 }
 
 .nav-list
