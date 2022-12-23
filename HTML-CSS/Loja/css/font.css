@@ -7,3 +7,18 @@
     font-family: Lovelyn;
     src: url(fonts/Lovelyn.otf);
 }
+
+@font-face {
+    font-family: Voga;
+    src: url(fonts/Voga.otf);
+}
+
+@font-face {
+    font-family: Buffalo;
+    src: url(fonts/Buffalo.otf);
+}
+
+@font-face {
+    font-family: Nadall;
+    src: url(fonts/NADALL.TTF);
+}
