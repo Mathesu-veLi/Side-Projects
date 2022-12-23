@@ -7,15 +7,77 @@
 
 main{
     padding: 8vh;
-    background: url(img/background.jpg) center center no-repeat fixed;
-    background-size: cover;
+    background: url(img/wallpaper.jpg) center center no-repeat fixed;
+    background-size: 100% 100%;
     height: 92vh;
 }
 
-@media screen and (max-width: 999px) {
+.banner{
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+
+.banner ul{
+    border: 2px solid white;
+    transition: .5s;
+}
+
+.banner li{
+    list-style: none;
+    color: white;
+    padding: 30px;
+    font-size: 50px;
+    transition: .5s;
+}
+
+.banner ul:hover *, .banner ul:hover
+{
+    color: black;
+    background-color: white;
+}
+
+.banner ul:hover{
+    border: 3px solid black;
+}
+
+
+@media screen and (max-width: 9899px) {
     main
     {
         background: url(img/mobile-wallpaper.jpg) center center no-repeat fixed;
     }
+
+    .banner ul
+    {
+        border: 3px solid white;
+        background-color: black;
+        transition: .5s;
+    }
+
+    
+
+    .border li
+    {
+        list-style: none;
+        color: black;
+        padding: 30px;
+        font-size: 50px;
+        transition: .5s;
+    }
+
+    .banner ul:hover *, .banner ul:hover
+    {
+        color: black;
+        background-color: rgb(235, 235, 235);
+    }
+    
+    .border ul:hover
+    {
+        border: 2px solid black;
+    }
+
 }
 
