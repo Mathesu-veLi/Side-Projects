@@ -44,7 +44,7 @@ main{
 }
 
 
-@media screen and (max-width: 9899px) {
+@media screen and (max-width: 999px) {
     main
     {
         background: url(img/mobile-wallpaper.jpg) center center no-repeat fixed;
