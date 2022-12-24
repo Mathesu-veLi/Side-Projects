@@ -9,7 +9,9 @@
     font-family: Lovelyn;
 }
 
-
+body{
+    background-color: rgb(220, 220, 255);
+}
 
 a{
     text-decoration: none;
@@ -19,4 +21,28 @@ a{
 li
 {
     list-style: none;
+}
+
+.promo{
+    height: 700px;
+    background: url(img/promo.jpeg) center center no-repeat fixed;
+    background-size: cover;
+}
+
+.escurecer
+{
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.escurecer h1{
+    font-family: Voga;
+    font-weight: lighter;
+    font-style: italic;
+    font-size: 60px;
 }
