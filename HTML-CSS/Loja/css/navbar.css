@@ -33,7 +33,7 @@ header
 .nav-link::before
 {
     content: '';
-    border: 1px solid black;
+    border: 1px solid white;
     position: absolute;
     width: 0;
     top: -9px;
