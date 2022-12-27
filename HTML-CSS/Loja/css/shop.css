@@ -1,5 +1,10 @@
 @import url(style.css);
 
+.produto-back
+{
+    background-color: rgb(245, 245, 245);
+}
+
 .produto
 {
     display: flex;
@@ -9,22 +14,25 @@
 
 .inf
 {
-    border: 1px solid black;
-    float: right;
-    width: 43%;
+    height: 400px;
     padding: 20px;
+    margin-top: 50px;
 }
+
 
 .inf p
 {
-    font-size: 30px;
+    font-size: 22px;
     font-family: Raleway;
     line-height: 220%;
 }
 
 .produto img
 {
-    width: 500px;
+    width: 400px;
+    border-radius: 20px;
+    margin-right: 50px;
+    margin-top: 50px;
 }
 
 .nav-pages *
@@ -47,9 +55,8 @@
 
 .precog
 {
-    display: block;
     padding: 20px;
-    margin-left: 41%;
+    margin-left: 865px;
     position: relative;
 }
 
@@ -58,12 +65,14 @@
     content: '';
     border: 1px solid gray;
     position: absolute;
-    display: block;
+    width: 500px;
+    top: -4px;
 }
 
 .precog::after
 {
-    top: 60px;
+    top: 120px;
+    left: 18px;
 }
 
 .precog *
@@ -80,9 +89,54 @@ h3
     font-family: Raleway;
 }
 
-h3 del
+h3 del, h3 small
 {
     font-size: 20px;
     font-family: Raleway;
     color: gray
+}
+
+.precopromo small
+{
+    color: red;
+}
+
+.marca
+{
+    font-size: 25px;
+    font-family: Nadall;
+}
+
+button
+{
+    margin-top: 40px;
+    padding: 10px;
+    width: 300px;
+    background-color: darkblue;
+    border: 1px solid gray;
+    font-size: 20px;
+    font-family: Lovelyn;
+    color: white;
+}
+
+.produto-back .title h2
+{
+    font-size: 50px;
+}
+
+.produto-back .title
+{
+    padding: 20px;
+}
+
+.produto-back .title h2::before
+{
+    top: 70px;
+    width: 20%;
+    border-color: rgb(0, 0, 100);
+}
+
+.produto-back .title h2:hover::before
+{
+    width: 100%;
 }
