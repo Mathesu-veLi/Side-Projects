@@ -1,0 +1,88 @@
+@import url(style.css);
+
+.produto
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inf
+{
+    border: 1px solid black;
+    float: right;
+    width: 43%;
+    padding: 20px;
+}
+
+.inf p
+{
+    font-size: 30px;
+    font-family: Raleway;
+    line-height: 220%;
+}
+
+.produto img
+{
+    width: 500px;
+}
+
+.nav-pages *
+{
+    display: inline-block;
+    color: black;
+}
+
+.nav-pages
+{
+    margin: 20px;
+    margin-left: 50px;
+}
+
+.nav-pages a::after
+{
+    content: '/';
+    padding: 5px;
+}
+
+.precog
+{
+    display: block;
+    padding: 20px;
+    margin-left: 41%;
+    position: relative;
+}
+
+.precog::before, .precog::after
+{
+    content: '';
+    border: 1px solid gray;
+    position: absolute;
+    display: block;
+}
+
+.precog::after
+{
+    top: 60px;
+}
+
+.precog *
+{
+    display: inline;
+    padding: 5px;
+}
+
+h3
+{
+    font-size: 35px;
+    font-weight: lighter;
+    color: darkblue;
+    font-family: Raleway;
+}
+
+h3 del
+{
+    font-size: 20px;
+    font-family: Raleway;
+    color: gray
+}
