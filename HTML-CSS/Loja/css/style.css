@@ -1,6 +1,6 @@
 @import url(navbar.css);
 @import url(font.css);
-@import url(send-email.css);
+@import url(forms.css);
 @import url(shop.css);
 
 *
@@ -189,6 +189,20 @@ h2 small
 .precos
 {
     line-height: 20px;
+}
+
+.message
+{
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 15px 10px;
+    background-color: var(--white);
+    text-align: center;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+    color: var(--black);
 }
 
 @media (max-width: 999px) {
