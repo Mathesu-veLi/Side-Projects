@@ -12,10 +12,10 @@
 
         if(mysqli_num_rows($select) > 0)
         {
-            $message[] = 'user already exist!';
+            $message[] = 'Usuario ja cadastrado!';
         }else{
             mysqli_query($conn, "INSERT INTO `user_form`(name, email, password) VALUES('$name', '$email', '$pass')") or die('query failed');
-            $message[] = 'registered successfully';
+            $message[] = 'Usuario registrado com sucesso!';
         }
     }
 ?>
@@ -27,7 +27,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>register</title>
+    <title>Registro - OUV Trajes</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/font.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
@@ -50,13 +50,13 @@
 
     <div class="form-container">
         <form action="" method="post">
-            <h3>Register now</h3>
-            <input type="text" name="name" placeholder="Enter name" required class="box">
-            <input type="email" name="email" placeholder="Enter email" required class="box">
-            <input type="password" name="password" placeholder="Enter password" required class="box">
-            <input type="password" name="cpassword" placeholder="Confirm password" required class="box">
-            <input type="submit" name="submit" class="btn" value="Register now">
-            <p>already have an account? <a href="login.php">login now</a></p>
+            <h3>Cadastro</h3>
+            <input type="text" name="name" placeholder="Nome" required class="box">
+            <input type="email" name="email" placeholder="Email" required class="box">
+            <input type="password" name="password" placeholder="Senha" required class="box">
+            <input type="password" name="cpassword" placeholder="Confirme sua senha" required class="box">
+            <input type="submit" name="submit" class="btn" value="Registre-se">
+            <p>Já tem uma conta? Faça<a href="login.php">login</a></p>
         </form>
     </div>
 </body>
