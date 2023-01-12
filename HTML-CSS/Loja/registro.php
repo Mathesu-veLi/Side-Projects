@@ -12,17 +12,18 @@
 
         if(mysqli_num_rows($select) > 0)
         {
-            $message[] = 'Usuario ja cadastrado!';
+            $message[] = 'Usuário já cadastrado!';
         }else{
             mysqli_query($conn, "INSERT INTO `user_form`(name, email, password) VALUES('$name', '$email', '$pass')") or die('query failed');
-            $message[] = 'Usuario registrado com sucesso!';
+            $message[] = 'Usuário registrado com sucesso!';
+            header('location:login.php');
         }
     }
 ?>
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,20 +36,22 @@
 <body class="regs-log">
 
 
+
+
     <?php
 
         if(isset($message))
         {
             foreach($message as $message)
             {
-                echo '<div class="message" onclicl="this.remove();">'.$message.'</div>';
+                echo '<div class="message" onclick="this.remove();">'.$message.'</div>';
             }
         }
 
     ?>
 
 
-    <div class="form-container">
+    <div class="form-container form">
         <form action="" method="post">
             <h3>Cadastro</h3>
             <input type="text" name="name" placeholder="Nome" required class="box">
