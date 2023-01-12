@@ -93,8 +93,9 @@
                                             <input type="submit" name="update_cart" value="Atualizar">
                                         </form>
                                     </td>
-                                    <td>R$<?php echo $sub_total = number_format($fetch_cart['price'] * $fetch_cart['quantity'])?></td>
+                                    <td>R$<?php echo $sub_total_visible = number_format($fetch_cart['price'] * $fetch_cart['quantity'])?></td>
                                     <td><a href="cart.php?remove=<?php echo $fetch_cart['id'];?>" class="remove" onclick="return confirm('Você tem certeza que deseja remover <?php echo $fetch_cart['name']?> do carrinho?')">Remover</a></td>
+                                    <?php $sub_total = $fetch_cart['price'] * $fetch_cart['quantity']?>
                             </tr>
                         </div>
                     <?php
@@ -107,7 +108,7 @@
                 </tbody>
                 <tr class="table-bottom">
                     <td colspan="4">Preço total: </td>
-                    <td>R$<?php echo $grand_total;?></td>
+                    <td>R$<?php echo number_format($grand_total);?></td>
                 </tr>
             </table>
         </div>
