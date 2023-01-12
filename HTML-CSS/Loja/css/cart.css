@@ -1,0 +1,125 @@
+@import url(style.css);
+
+input[type=number]
+{
+    height: 40px;
+    width: 60px;
+    padding: 10px;
+    border-radius: 0;
+}
+
+td
+{
+    padding: 10px 15px;
+}
+
+th
+{
+    padding: 10px;
+}
+
+.alert-red
+{
+    background-color: rgb(150, 0, 0);
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    border: 1px solid black;
+
+}
+
+.alert-red:hover
+{
+    background-color: rgb(100, 0, 0);
+}
+
+.cart
+{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 75vw;
+    padding: 20px;
+    padding-bottom: 50px;
+    border-radius: 5px;
+    transition: .5s;
+    position: relative;
+    border: 1px solid black;
+}
+
+.shopping-cart
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    flex-flow: column;
+}
+
+.quant *
+{
+    margin: 20px;
+    display: inline;
+}
+
+.quant
+{
+    width: 250px;
+}
+
+.remove
+{
+    color: blue;
+}
+
+.remove:hover
+{
+    color: rgb(0, 0, 50);
+}
+
+.click
+{
+    cursor: pointer;
+}
+
+.name
+{
+    min-width: 200px;
+    align-content: center;
+}
+
+.checkout
+{
+    background-color: green;
+    padding: 15px 20px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.checkout:hover
+{
+    background-color: rgb(0, 80, 0);
+}
+
+.box-checkout
+{
+    min-width: 191px;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media (min-width: 1400px) {
+    .cart
+    {
+        width: 60vw;
+    }
+}
+
+@media (max-width: 1100px) {
+    table
+    {
+        width: 40vw;
+    }
+}
