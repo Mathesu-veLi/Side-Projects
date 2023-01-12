@@ -101,7 +101,9 @@
                     <?php
                         $grand_total += $sub_total;
                             }
-                        }
+                        }else{
+                            echo '<tr><td style="padding:20px;" colspan="6">Nenhum item adicionado ao carrinho</td></tr>';
+                         }
         
                     ?>
                     
