@@ -3,7 +3,7 @@
 .produto-back
 {
     background-color: rgb(245, 245, 245);
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .produto
@@ -112,7 +112,7 @@ h3 del, h3 small
 
 button
 {
-    margin-top: 40px;
+    margin-top: 60px;
     padding: 10px;
     width: 300px;
     background-color: darkblue;
@@ -142,4 +142,66 @@ button
 .produto-back .title h2:hover::before
 {
     width: 100%;
+}
+
+.mobile
+{
+    display: none;
+}
+
+.car-quant
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 999px) {
+
+    .produto-back .title h2::before
+    {
+        top: 140px;
+    }
+
+    .produto
+    {
+        display: inline-block;
+    }
+
+    .produto img
+    {
+        margin-right: 0;
+    }
+
+    .precog::before, .precog::after
+    {
+        width: 80vw;
+    }
+
+    .pc{
+        display: none;
+    }
+
+    .mobile
+    {
+        display: inline-block;
+        align-items: center;
+        width: 50vh;
+    }
+
+    .mobile img
+    {
+        width: 300px;
+    }
+
+    .nav-pages
+    {
+        margin-left: 2vh;
+    }
+
+    .precog::after
+    {
+        top: 130px;
+        left: 40px;
+    }
 }
