@@ -55,7 +55,7 @@
                 </div>
                 <a href="" class="logo"><img src="/Loja/img/logo.png" alt="logo" width="180"></a>
                 <ul class="nav-menu">
-                    <li class="nav-item"><a href="/Loja/index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="/Loja/index.php" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="/Loja/comprar.html" class="nav-link">Comprar</a></li>
                     <li class="nav-item"><a href="/Loja/contato.html" class="nav-link">Contato</a></li>
                 </ul>
