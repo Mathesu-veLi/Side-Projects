@@ -13,6 +13,7 @@
         {
             $row = mysqli_fetch_assoc($select);
             $_SESSION['user_id'] = $row['id'];
+            $_SESSION['user_name'] = $row['name'];
             header('location:cart.php');
         }else{
             $message[] = 'Senha ou email incorreto!';
