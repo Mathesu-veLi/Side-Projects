@@ -7,6 +7,7 @@
         $email = mysqli_real_escape_string($conn, $_POST['email']);
         $pass = mysqli_real_escape_string($conn, $_POST['password']);
         $cpass = mysqli_real_escape_string($conn, $_POST['cpassword']);
+        $grand_total = 00.00;
 
         $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE email = '$email' AND password = '$pass'") or die('query failed');
 
@@ -14,7 +15,7 @@
         {
             $message[] = 'Usuário já cadastrado!';
         }else{
-            mysqli_query($conn, "INSERT INTO `user_form`(name, email, password) VALUES('$name', '$email', '$pass')") or die('query failed');
+            mysqli_query($conn, "INSERT INTO `user_form`(name, email, password, grand_total) VALUES('$name', '$email', '$pass', '$grand_total')") or die('query failed');
             $message[] = 'Usuário registrado com sucesso!';
             header('location:login.php');
         }
