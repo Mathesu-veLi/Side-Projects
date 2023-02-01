@@ -143,29 +143,50 @@ if (isset($_GET['remove'])) {
 
                     <?php
                             $grand_total += $sub_total;
-                            mysqli_query($conn, "UPDATE `user_form` SET `grand_total` = '{$grand_total}' WHERE `user_form`.`id` = $user_id") or die('query failed');
                         }
                     } else {
                         echo '<tr style="display: flex; justify-content: center;"><td style="padding:20px;">Nenhum item adicionado ao carrinho</td></tr>';
                     }
                     ?>
-                    <tr class="table-bottom">
+                    <div class="table-bottom">
                         <td colspan="4">Preço total: </td>
                         <td>R$<?php echo number_format($grand_total,2); ?></td>
-                    </tr>
+                    </div>
                 </tbody>
             </table>
         </div>
 
         <?php
+        
         if (mysqli_num_rows($cart_query) > 0) {
+            $select = mysqli_query($conn, "SELECT * FROM `user_form` WHERE id = '$user_id'") or die('query failed');
+            $row = mysqli_fetch_assoc($select);
             echo '<hr style="margin: 20px 0;">';
-            echo '<div class="box-checkout"><a class="checkout" href="mercado-pago/index.php">Finalizar Compra</a></div>';
+            if(empty($row['cep']))
+            {
+                echo '<div class="box-checkout"><a class="checkout" href="address.php">Finalizar Compra</a></div>';
+            }else
+            {
+                echo '<div class="box-checkout"><a class="checkout" onclick="newaddress()">Finalizar Compra</a></div>';
+            }
         }
         ?>
 
     </div>
     <script src="mobile-menu.js"></script>
+    <script>
+        function newaddress()
+        {
+            var confir = confirm("Você tem um endereço cadastrado, cujo o cep é <?php echo $row['cep']?>\nAperte OK para usar este endereço ou aperte Cancel para cadastrar um novo")
+            if (confir == true)
+            {
+                location.href = 'mercado-pago/index.php'
+            } else
+            {
+                location.href = 'address.php'
+            }
+        }
+    </script>
 </body>
 
 </html>
