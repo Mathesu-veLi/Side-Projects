@@ -125,7 +125,7 @@
                 </div>
                 
                 <div class="car-quant">
-                    <center><button type="submit" name="add_to_cart">Adicionar ao carrinho</button>
+                    <center style="width: 100%;"><input type="submit" name="add_to_cart" class="submitBtn" style="width: 22%;" value="Adicionar ao carrinho">
                     <input type="number" name="product_quantity" min="1" value="1" style="padding: 10px; margin-left: 15px;"></center>
                 </div>
                 <input type="hidden" name="product_image" value="camisa-da-argentina.jpg">
