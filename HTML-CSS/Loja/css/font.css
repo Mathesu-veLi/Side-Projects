@@ -32,3 +32,8 @@
     font-family: Monocraft;
     src: url(/Loja/fonts/Monocraft.otf);
 }
+
+@font-face {
+    font-family: JetBrains;
+    src: url(/Loja/fonts/JetBrains/JetBrainsMono-Regular.ttf);
+}
