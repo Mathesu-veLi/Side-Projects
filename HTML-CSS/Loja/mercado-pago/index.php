@@ -11,9 +11,12 @@ require_once 'vendor/autoload.php';
 
 MercadoPago\SDK::setAccessToken("TEST-2745555273761282-012820-98b37a0eede4538acf8e3688eb7c7574-1257000430");
 $preference = new MercadoPago\Preference();
+
 $cart_query = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
+
 $items = array();
 $x = 1;
+
 if (mysqli_num_rows($cart_query) > 0) {
     while ($fetch_cart = mysqli_fetch_assoc($cart_query)) {
         $price = 0;
@@ -39,4 +42,4 @@ $preference->back_urls = array(
 $preference->save();
 
 $link = $preference->init_point;
-header('location: '.$link);
+header('location: ' . $link);
