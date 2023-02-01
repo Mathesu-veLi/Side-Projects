@@ -3,6 +3,7 @@
 @import url(forms.css);
 @import url(shop.css);
 @import url(cart.css);
+@import url(address.css);
 
 *
 {
@@ -12,18 +13,24 @@
 }
 
 body{
-    background-color: rgb(220, 220, 255);
+    background-color: #E7E7E7;
     margin-bottom: 40px;
 }
 
 a{
     text-decoration: none;
     color: white;
+    cursor: pointer;
 }
 
 li
 {
     list-style: none;
+}
+
+input
+{
+    cursor: pointer;
 }
 
 .promo{
