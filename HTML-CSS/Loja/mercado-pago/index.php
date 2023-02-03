@@ -19,9 +19,6 @@ $x = 1;
 
 if (mysqli_num_rows($cart_query) > 0) {
     while ($fetch_cart = mysqli_fetch_assoc($cart_query)) {
-        $price = 0;
-        $name = $fetch_cart['name'];
-        ${"item$x"} = $fetch_cart['name'];
         ${"item$x"} = new MercadoPago\Item;
         ${"item$x"}->title = $fetch_cart['name'];
         ${"item$x"}->quantity = $fetch_cart['quantity'];
@@ -34,7 +31,7 @@ if (mysqli_num_rows($cart_query) > 0) {
 $preference->items = $items;
 
 $preference->back_urls = array(
-    "success" => 'https://d02f-2804-d47-71f9-5400-dc38-1ed7-e8be-703b.sa.ngrok.io/Loja/index.php?pay',
+    "success" => 'http://localhost/Loja/index.php?pay',
     "failure" => '',
     "pending" => ''
 );
