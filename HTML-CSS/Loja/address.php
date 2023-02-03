@@ -46,19 +46,24 @@ if (isset($_POST['checkout'])) {
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-            <a href="" class="logo"><img src="img/logo.png" alt="logo" width="180" /></a>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.php" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="comprar.html" class="nav-link">Comprar</a>
-                </li>
-                <li class="nav-item">
-                    <a href="contato.html" class="nav-link">Contato</a>
-                </li>
-            </ul>
-            <a href="cart.php"><img src="img/shopping-cart-white.png" alt="Carrinho" width="50" /></a>
+            <a href="" class="logo"><img src="img/logo.png" alt="logo" width="180"></a>
+            <ul class="nav-menu" style="width: 100%; justify-content: center;">
+                <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="comprar.php" class="nav-link">Comprar</a></li>
+                <li class="nav-item"><a href="contato.php" class="nav-link">Contato</a></li>                <?php if (isset($user_id)) {
+
+                    $user_name = $_SESSION['user_name'];
+                    echo '
+                            <li class="dropdown">
+                                <p style="color: white">' . $user_name . '&nbsp&nbsp<i class="fas fa-chevron-down"></i></p>
+                                <ul>
+                                    <li><a href="index.php?logout">Logout</a></li>
+                                </ul>
+                            </li>
+                            ';
+                } ?>
+                </ul>
+                <a href="cart.php"><img src="img/shopping-cart-white.png" alt="Carrinho" width="50"></a>
         </nav>
     </header>
 
@@ -106,10 +111,6 @@ if (isset($_POST['checkout'])) {
                     </div>
                     <input type="submit" name="checkout" class="submitBtn">
                 </div>
-
-                <input type="hidden" name="_subject" value="Nova mensagem, senhor Joaca">
-                <input type="text" name="_honey" style="display: none;">
-                <input type="hidden" name="_captcha" value="false">
 
 
             </form>

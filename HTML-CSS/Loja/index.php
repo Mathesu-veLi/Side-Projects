@@ -22,10 +22,9 @@ function send_whatsapp($message = "Test")
         return false;
     }
 }
-
+$user_id = $_SESSION['user_id'];
+$user_name = $_SESSION['user_name'];
 if (isset($_GET['pay'])) {
-    $user_id = $_SESSION['user_id'];
-    $user_name = $_SESSION['user_name'];
     if (!isset($user_id)) {
         header('location:login.php');
     } else {
@@ -38,13 +37,18 @@ if (isset($_GET['pay'])) {
             while ($fetch_cart = mysqli_fetch_assoc($cart_query)) {
                 $items .= "{$fetch_cart['name']} ({$fetch_cart['quantity']})  ";
                 $grand_total += $fetch_cart['price'] * $fetch_cart['quantity'];
-                /*mysqli_query($conn, "DELETE FROM `cart` WHERE id = {$fetch_cart['id']}") or die('query failed');*/
+                mysqli_query($conn, "DELETE FROM `cart` WHERE id = {$fetch_cart['id']}") or die('query failed');
             }
             mysqli_query($conn, "INSERT INTO `orders` (user_id, user_name, items) VALUES ('$user_id', '$user_name', '$items')") or die('query failed');
-            $grand_total = 'R$'.number_format($grand_total, 2);
+            $grand_total = 'R$' . number_format($grand_total, 2);
             send_whatsapp("Nova compra na OUV-Shop!\nO usuário {$user_name} acaba de comprar {$items}\nO preço total foi de {$grand_total}\nO endereço de {$user_name} é:\nCEP: {$row['cep']}\nEstado: {$row['estado']}\nCidade: {$row['cidade']}\nRua: {$row['rua']}\nNúmero: {$row['numero']}\nComplemento: {$row['complemento']}");
         }
     }
+}
+
+if (isset($_GET['logout'])) {
+    unset($user_id);
+    session_destroy();
 }
 
 ?>
@@ -58,6 +62,7 @@ if (isset($_GET['pay'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/0a970faf9c.js" crossorigin="anonymous"></script>
     <title>OUV Trajes</title>
 </head>
 
@@ -70,14 +75,24 @@ if (isset($_GET['pay'])) {
                 <span class="bar"></span>
             </div>
             <a href="" class="logo"><img src="img/logo.png" alt="logo" width="180"></a>
-            <ul class="nav-menu">
+            <ul class="nav-menu" style="width: 100%; justify-content: center;">
                 <li class="nav-item"><a href="index.php" class="nav-link">Home</a></li>
-                <li class="nav-item"><a href="comprar.html" class="nav-link">Comprar</a></li>
-                <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+                <li class="nav-item"><a href="comprar.php" class="nav-link">Comprar</a></li>
+                <li class="nav-item"><a href="contato.php" class="nav-link">Contato</a></li>
+                <?php if (isset($user_id)) {
+
+                    $user_name = $_SESSION['user_name'];
+                    echo '
+                            <li class="dropdown">
+                                <p style="color: white">' . $user_name . '&nbsp&nbsp<i class="fas fa-chevron-down"></i></p>
+                                <ul>
+                                    <li><a href="index.php?logout">Logout</a></li>
+                                </ul>
+                            </li>
+                            ';
+                } ?>
             </ul>
-            <div style="display: flex;flex-direction: row;">
-                <a href="cart.php"><img src="img/shopping-cart-white.png" alt="Carrinho" width="50"></a>
-            </div>
+            <a href="cart.php"><img src="img/shopping-cart-white.png" alt="Carrinho" width="50"></a>
         </nav>
     </header>
 
