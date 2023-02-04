@@ -120,10 +120,10 @@
                         <p>• Camisa 100% poliéster;</p>
                         <p>• Logotipo da marca bordado;</p>
                         <p>• Logotipo da equipe bordado;</p>
-                        <p>• Tecnologia anti-suor</p>
-                        <p>• Corte padrão para um toque descontraído e tranquilo.</p>
-                        <p>• Lavável à máquina</p>
-                        <p>• Importado</p>
+                        <p>• Tecnologia anti-suor;</p>
+                        <p>• Corte padrão para um toque descontraído e tranquilo;</p>
+                        <p>• Lavável à máquina;</p>
+                        <p>• Importado;</p>
                         <div class="precog">
                             <h3>R$146.00</h3>
                             <h3><small><del>R$399.00</del></small></h3>
