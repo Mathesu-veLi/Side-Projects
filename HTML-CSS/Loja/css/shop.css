@@ -26,6 +26,8 @@
     font-size: 22px;
     font-family: Raleway;
     line-height: 220%;
+    color: black;
+    font-style: normal;
 }
 
 .produto img
@@ -138,6 +140,7 @@ h3 del, h3 small
 
 .car-quant
 {
+    margin: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
