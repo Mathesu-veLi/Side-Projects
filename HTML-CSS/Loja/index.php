@@ -5,8 +5,8 @@ session_start();
 
 function send_whatsapp($message = "Test")
 {
-    $phone = "+557197044006";  // Enter your phone number here
-    $apikey = "2078976";       // Enter your personal apikey received in step 3 above
+    $phone = "+557197044006";
+    $apikey = "2078976";
 
     $url = 'https://api.callmebot.com/whatsapp.php?source=php&phone=' . $phone . '&text=' . urlencode($message) . '&apikey=' . $apikey;
 
@@ -15,7 +15,6 @@ function send_whatsapp($message = "Test")
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
         $html = curl_exec($ch);
         $status = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        // echo "Output:".$html;  // you can print the output for troubleshooting
         curl_close($ch);
         return (int) $status;
     } else {
@@ -66,7 +65,7 @@ if (isset($_GET['logout'])) {
     <title>OUV Trajes</title>
 </head>
 
-<body>
+<body id="index">
     <header>
         <nav class="navbar">
             <div class="hamb">
@@ -95,55 +94,54 @@ if (isset($_GET['logout'])) {
             <a href="cart.php"><img src="img/shopping-cart-white.png" alt="Carrinho" width="50"></a>
         </nav>
     </header>
-
-    <main>
-        <div class="promo">
-            <div class="escurecer">
-                <h1>Promoção!</h1>
-            </div>
+    <div class="banner"><img src="img/banner.png" alt=""></div>
+    <div class="sobre">
+        <div class="text">
+            <h1>Sobre a nossa empresa</h1>
+            <p>Especializada em camisas de futebol e artigos esportivos, a loja virtual surgiu em 2022 na cidade de Salvador(BA) e reúne uniformes completos dos mais variados clubes brasileiros, internacionais e seleções - dos mais consagrados aos menos conhecidos. Com a maior variedade em camisas de times de futebol no mercado nacional, a OUV trabalha em parceria com as principais marcas esportivas para comercializar somente produtos originais e com garantia de qualidade. Além disso, a loja possui certificados de segurança que oferecem ao cliente um ambiente de compra confiável.
+            </p>
         </div>
-        <div class="about"></div>
-
-        <div class="sobre">
-            <center class="title">
-                <h2>Sobre</h2>
-            </center>
-            <div class="imgs">
-                <div class="img"><img src="https://static1.s123-cdn-static-a.com/uploads/7229753/400_639c11907008b.jpg" alt="Camisa 2"></div>
-                <div class="img"><img src="https://static1.s123-cdn-static-a.com/uploads/7229753/400_639c0ff9d0970.jpg" alt="Camisa 1"></div>
-                <div class="img"><img src="https://static1.s123-cdn-static-a.com/uploads/7229753/400_639c10fbe322c.jpg" alt="Camisa 3"></div>
-            </div>
-            <div class="conteiner">
-                <p>Especializada em camisas de futebol e artigos esportivos, a loja virtual surgiu em 2022 na cidade de Salvador (BA) e reúne uniformes completos dos mais variados clubes brasileiros, internacionais e seleções - dos mais consagrados aos menos conhecidos. Com a maior variedade em camisas de times de futebol no mercado nacional, a OUV trabalha em parceria com as principais marcas esportivas para comercializar somente produtos originais e com garantia de qualidade. Além disso, a loja possui certificados de segurança que oferecem ao cliente um ambiente de compra confiável.</p>
-            </div>
+        <div class="img"><img src="img/camisas-img.png" alt=""></div>
+    </div>
+    <div class="exemplos">
+        <h1>O que ofereçemos</h1>
+        <p>Camisas de alta qualidade</p>
+        <img src="img/camisas-alta-qualidade.png" alt="">
+    </div>
+        <center><h1 id="depoimentos" style="color: white">Depoimentos</h1></center>
+    <div class="depoimentos">
+        
+        <span>
+            <p>Comprei pro meu filho e ele adorou!</p>
+            <p>Cristiane Alves, 42</p>
+        </span>
+        <span>
+            <p>As camisas são lindas! Comprei 2 para usar com meu namorado!</p>
+            <p>Lorena Carvalho, 24</p>
+        </span>
+        <span>
+            <p>O tecido delas é ótimo</p>
+            <p>Fernando Moares, 20</p>
+        </span>
+    </div>
+    <div class="colecaocompleta">
+        <h1>Coleção completa</h1>
+        <img src="img/colecao-completa.png" alt="">
+    </div>
+    <footer>
+        <div>
+            <h1>Endereço</h1>
+            <p>Rua Armando Novais Silveira, 6 - Salvador - BA</p>
         </div>
-
-        <div class="nw-clct">
-            <center class="title">
-                <h2>Nova Coleção</h2>
-            </center>
-            <div class="new-center">
-                <div class="camisa">
-                    <a href="produtos/Camisa-da-Argentina.php">
-                        <div class="arg">
-                            <div class="arg-camisa">
-                                <img src="https://static1.s123-cdn-static-a.com/uploads/7229753/400_639c10fbe322c.jpg" alt="Camisa da Argentina">
-                            </div>
-                            <div class="new-title">
-                                <h1>Camisa da Argentina</h1>
-                                <div class="precos">
-                                    <h2><small><del>R$399</del></small></h2>
-                                    <h2>R$146</h2>
-                                </div>
-                            </div>
-                            <br>
-                            <p>• Camisa 100% poliéster; • Logotipo da marca bordado; • Logotipo da equipe bordado; • Tecnologia anti-...</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+        <div>
+            <h1>E-mail</h1>
+            <p>joaquimgameplays@gmail.com</p>
         </div>
-    </main>
+        <div>
+            <h1>Telefone</h1>
+            <p>(71) 99704-4006</p>
+        </div>
+    </footer>
     <script src="mobile-menu.js"></script>
 </body>
 
