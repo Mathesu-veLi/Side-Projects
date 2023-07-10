@@ -17,6 +17,6 @@ exports.register = async function (req, res) {
             return;
         };
     } catch (e) {
-        console.log(e)
+        res.render('404')
     };
 };
