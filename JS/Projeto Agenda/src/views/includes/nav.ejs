@@ -7,9 +7,15 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
+                <% if(!user) { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login/Registrar</a>
+                    </li>
+                <% } else { %>
                 <li class="nav-item">
-                    <a class="nav-link" href="/login">Login/Registrar</a>
+                    <a class="nav-link" href="/login/logout">Logout</a>
                 </li>
+                <% }; %>
 
             </ul>
         </div>

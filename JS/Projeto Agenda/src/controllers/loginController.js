@@ -41,10 +41,15 @@ exports.login = async function (req, res) {
         req.flash('success', 'Você entrou no sistema.');
         req.session.user = login.user;
         req.session.save(function() {
-          return res.redirect('/login');
+          return res.redirect('/');
         });
       } catch(e) {
         console.log(e);
         return res.render('404');
       }
+};
+
+exports.logout = function(req, res) {
+  req.session.destroy();
+  res.redirect('/');
 }
