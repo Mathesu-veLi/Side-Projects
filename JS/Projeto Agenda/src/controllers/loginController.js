@@ -2,9 +2,9 @@ const Login = require('../models/LoginModel');
 
 exports.index = (req, res) => {
   if(req.session.user) {
-    req.flash('errors', 'Você já está logado');
-    res.redirect('/');
-  };
+    req.flash('errors', 'Você já está logado')
+    res.redirect('/')
+  }
     res.render('login');
 };
 
