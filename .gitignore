@@ -2,3 +2,6 @@
 HTML-CSS/Loja/user-page.php
 HTML-CSS/Loja/.prettierrc
 *.txt
+
+# Local Netlify folder
+.netlify
