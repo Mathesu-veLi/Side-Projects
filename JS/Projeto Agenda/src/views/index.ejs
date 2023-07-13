@@ -10,24 +10,16 @@
 
         <div class="responsive-table">
           <table class="table my-3">
+            <% contatos.forEach(contato => { %>
             <tr>
-              <td>Matheus</td>
-              <td>Fernandes</td>
-              <td>14719241239</td>
-              <td>matheuslevit@gmail.com</td>
+              <td><%= contato.nome %></td>
+              <td><%= contato.sobrenome %></td>
+              <td><%= contato.tel %></td>
+              <td><%= contato.email %></td>
+              <td><a href="/contato/index/<%= contato._id %>">Editar</a></td>
+              <td><a href="/contato/delete/<%= contato._id %>" class="text-danger">Deletar</a></td>
             </tr>
-            <tr>
-              <td>Matheus</td>
-              <td>Fernandes</td>
-              <td>14719241239</td>
-              <td>matheuslevit@gmail.com</td>
-            </tr>
-            <tr>
-              <td>Matheus</td>
-              <td>Fernandes</td>
-              <td>14719241239</td>
-              <td>matheuslevit@gmail.com</td>
-            </tr>
+            <% }); %>
           </table>
         </div>
 
