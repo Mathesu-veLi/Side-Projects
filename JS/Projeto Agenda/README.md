@@ -4,4 +4,4 @@
 <p>Eles ficam salvos na sua conta, assim você não os perde tão facilmente</p>
 
 
-<p>Acesse já o site <a href="agendaproject.vercel.app" target="_blank" style="color: #1D5D9B; margin-top: 20;">Agendaproject</a> e nunca mais perca seus contatos</p>
+<p>Acesse já o site <a href="agendaproject.vercel.app" target="_blank">Agendaproject</a> e nunca mais perca seus contatos</p>
