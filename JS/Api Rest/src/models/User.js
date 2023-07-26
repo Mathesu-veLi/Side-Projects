@@ -1,5 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
-import { defaultValueSchemable } from 'sequelize/types/utils';
+import bcryptjs from 'bcryptjs';
 
 export default class User extends Model {
   static init(sequelize) {
@@ -12,7 +12,6 @@ export default class User extends Model {
             args: [3, 255],
             msg: 'Campo nome deve ter entre 3 e 255 caracteres'
           },
-
         }
       },
       email: {
@@ -41,6 +40,11 @@ export default class User extends Model {
     }, {
       sequelize,
     });
+
+    this.addHook('beforeSave', async user => {
+      user.password_hash = await bcryptjs.hash(user.password, 8);
+    });
+
     return this;
   };
 };
