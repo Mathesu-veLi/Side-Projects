@@ -21,12 +21,24 @@ export default class User extends Model {
           isEmail: {
             msg: 'Email inválido'
           },
-        }
+
+          isUnique(value, next) {
+            User.findOne({ where: {email: value }}).then(user => {
+              if(user) {
+                return next('Email já existe, tente outro!');
+              };
+              return next();
+            }).catch(err => next(err));
+          },
+
+        },
       },
+
       password_hash: {
         type: Sequelize.STRING,
         defaultValue: '',
       },
+
       password: {
         type: Sequelize.VIRTUAL,
         defaultValue: '',
@@ -37,6 +49,7 @@ export default class User extends Model {
           },
         }
       },
+
     }, {
       sequelize,
     });
