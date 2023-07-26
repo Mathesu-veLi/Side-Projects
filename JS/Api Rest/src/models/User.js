@@ -15,12 +15,32 @@ export default class User extends Model {
 
         }
       },
-      email: Sequelize.STRING,
-      password_hash: Sequelize.STRING,
-      password: Sequelize.VIRTUAL,
+      email: {
+        type: Sequelize.STRING,
+        defaultValue: '',
+        validate: {
+          isEmail: {
+            msg: 'Email inválido'
+          },
+        }
+      },
+      password_hash: {
+        type: Sequelize.STRING,
+        defaultValue: '',
+      },
+      password: {
+        type: Sequelize.VIRTUAL,
+        defaultValue: '',
+        validate: {
+          len: {
+            args: [6, 50],
+            msg: 'A senha precisa ter entre 6 e 50 caracteres',
+          },
+        }
+      },
     }, {
       sequelize,
     });
     return this;
-  }
-}
+  };
+};
