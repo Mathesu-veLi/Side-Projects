@@ -1,5 +1,5 @@
 import User from '../models/User';
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
 
 class TokenController {
   async store(req, res) {
