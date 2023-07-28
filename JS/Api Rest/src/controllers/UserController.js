@@ -16,7 +16,7 @@ class UserController {
     try {
       const users = await User.findAll();
       return res.json(users)
-    } catch(e) {
+    } catch (e) {
       return res.json(null);
     }
   }
@@ -30,7 +30,7 @@ class UserController {
         })
       }
       return res.json(user)
-    } catch(e) {
+    } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(erro => erro.message),
       })
@@ -39,14 +39,14 @@ class UserController {
 
   async update(req, res) {
     try {
-      if(!req.params.id) {
+      if (!req.params.id) {
         return res.status(400).json({
           errors: ['ID não enviado']
         })
       }
 
       const user = await User.findByPk(req.params.id);
-      if(!user) {
+      if (!user) {
         return res.status(400).json({
           errors: ['Usuário não existe']
         });
@@ -55,7 +55,33 @@ class UserController {
       const novosDados = await user.update(req.body);
 
       return res.json(novosDados)
-    } catch(e) {
+    } catch (e) {
+      return res.status(400).json({
+        errors: e.errors.map(erro => erro.message),
+      })
+    }
+  }
+
+  async delete(req, res) {
+    try {
+      if (!req.params.id) {
+        return res.status(400).json({
+          errors: ['ID não enviado']
+        })
+      }
+
+      const user = await User.findByPk(req.params.id);
+      if (!user) {
+        return res.status(400).json({
+          errors: ['Usuário não existe']
+        });
+      }
+
+      await user.destroy();
+      return res.json(user);
+
+      return res.json(novosDados)
+    } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(erro => erro.message),
       })
