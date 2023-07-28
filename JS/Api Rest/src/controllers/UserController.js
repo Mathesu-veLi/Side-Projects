@@ -4,7 +4,8 @@ class UserController {
   async store(req, res) {
     try {
       const novoUser = await User.create(req.body);
-      return res.json(novoUser);
+      const {id, nome, email} = novoUser;
+      return res.json({id, nome, email});
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(erro => erro.message),
@@ -24,11 +25,6 @@ class UserController {
   async show(req, res) {
     try {
       const user = await User.findByPk(req.params.id);
-      if (!user) {
-        return res.status(400).json({
-          errors: ['ID inexistente']
-        });
-      };
 
       const {id, nome, email} = user
       return res.json({id, nome, email})
@@ -49,8 +45,9 @@ class UserController {
       }
 
       const novosDados = await user.update(req.body);
+      const {id, nome, email} = novosDados
 
-      return res.json(novosDados)
+      return res.json({id, nome, email})
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(erro => erro.message),
