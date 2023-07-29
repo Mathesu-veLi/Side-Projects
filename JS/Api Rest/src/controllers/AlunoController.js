@@ -2,8 +2,8 @@ import Aluno from '../models/Aluno';
 
 class AlunoController {
   async index(req, res) {
-    const alunos = await Aluno.findAll()
-    res.json(alunos);
+    const alunos = await Aluno.findAll({ attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'] });
+    return res.json(alunos);
   };
 
   async show(req, res) {
@@ -23,7 +23,9 @@ class AlunoController {
         });
       };
 
-      return res.json(aluno);
+      const {nome, sobrenome, email, idade, peso, altura} = aluno
+
+      return res.json({id, nome, sobrenome, email, idade, peso, altura});
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(err => err.message)
@@ -33,9 +35,10 @@ class AlunoController {
 
   async store(req, res) {
     try {
-      const aluno = Aluno.create(req.body)
+      const aluno = await Aluno.create(req.body)
+      const {id, nome, sobrenome, email, idade, peso, altura} = aluno
 
-      return res.json(aluno)
+      return res.json({id,nome, sobrenome, email, idade, peso, altura})
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(err => err.message)
@@ -60,8 +63,10 @@ class AlunoController {
         });
       };
 
-      const alunoAtualizado = aluno.update(req.body);
-      return res.json(aluno);
+      const alunoAtualizado = await aluno.update(req.body);
+      const {nome, sobrenome, email, idade, peso, altura} = alunoAtualizado;
+
+      return res.json({nome, sobrenome, email, idade, peso, altura});
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(err => err.message)
