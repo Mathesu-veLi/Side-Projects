@@ -13,6 +13,7 @@ export default class Aluno extends Model {
           },
         },
       },
+
       sobrenome: {
         type: Sequelize.STRING,
         defaultValue: '',
@@ -23,15 +24,27 @@ export default class Aluno extends Model {
           },
         },
       },
+
       email: {
         type: Sequelize.STRING,
         defaultValue: '',
-        validade: {
+        validate: {
           isEmail: {
-            msg: 'E-mail inválido'
-          }
+            msg: 'Email inválido'
+          },
+
+          isUnique(value, next) {
+            Aluno.findOne({ where: {email: value }}).then(aluno => {
+              if(aluno) {
+                return next('Email já existe, tente outro!');
+              };
+              return next();
+            }).catch(err => next(err));
+          },
+
         },
       },
+
       idade: {
         type: Sequelize.INTEGER,
         defaultValue: '',
@@ -41,6 +54,7 @@ export default class Aluno extends Model {
           },
         },
       },
+
       peso: {
         type: Sequelize.FLOAT,
         defaultValue: '',
@@ -50,6 +64,7 @@ export default class Aluno extends Model {
           },
         },
       },
+      
       altura: {
         type: Sequelize.FLOAT,
         defaultValue: '',
