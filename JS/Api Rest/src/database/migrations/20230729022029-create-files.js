@@ -1,7 +1,7 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up(queryInterface, Sequelize) {
-    return queryInterface.createTable('fotos', {
+    return queryInterface.createTable('photos', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -37,5 +37,5 @@ module.exports = {
     });
   },
 
-  down: (queryInterface) => queryInterface.dropTable('fotos')
+  down: (queryInterface) => queryInterface.dropTable('photos')
 };
