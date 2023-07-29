@@ -34,8 +34,8 @@ export default class Aluno extends Model {
           },
 
           isUnique(value, next) {
-            Aluno.findOne({ where: {email: value }}).then(aluno => {
-              if(aluno) {
+            Aluno.findOne({ where: { email: value } }).then(aluno => {
+              if (aluno) {
                 return next('Email já existe, tente outro!');
               };
               return next();
@@ -64,7 +64,7 @@ export default class Aluno extends Model {
           },
         },
       },
-      
+
       altura: {
         type: Sequelize.FLOAT,
         defaultValue: '',
@@ -74,9 +74,16 @@ export default class Aluno extends Model {
           },
         },
       },
+
+      created_by: {
+        type: Sequelize.STRING,
+        defaultValue: ''
+      }
     }, {
       sequelize,
     });
+
+    this.addHook('beforeSave', (aluno, userId) => aluno.created_by = userId);
     return this;
   }
 }
