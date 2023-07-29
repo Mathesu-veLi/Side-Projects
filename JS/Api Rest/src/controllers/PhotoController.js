@@ -1,18 +1,24 @@
 import multer from 'multer';
 import multerConfig from '../config/multerConfig';
+
+import Photo from '../models/Photo';
+
 const upload = multer(multerConfig).single('file');
 
 
 class PhotoController {
-  async store(req, res) {
-    return upload(req, res, e => {
-      if(e) {
+  store(req, res) {
+    return upload(req, res, async e => {
+      if (e) {
         return res.status(400).json({
           erros: [e.code],
         });
       };
 
-      res.json(req.file);
+      const { originalname, filename } = req.file;
+      const photo = await Photo.create({ originalname, filename })
+
+      res.json(photo);
     });
   };
 };
