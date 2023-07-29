@@ -4,8 +4,8 @@ class AlunoController {
   async index(req, res) {
     const alunos = await Aluno.findAll({
       attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', 'created_by'],
-      where: {created_by: req.userId },
-     });
+      where: { created_by: req.userId },
+    });
     return res.json(alunos);
   };
 
@@ -19,8 +19,7 @@ class AlunoController {
       };
 
       const aluno = await Aluno.findByPk(id);
-
-      const {nome, sobrenome, email, idade, peso, altura, created_by} = aluno
+      const { nome, sobrenome, email, idade, peso, altura, created_by } = aluno
 
       if (!aluno || created_by !== req.userId) {
         return res.status(400).json({
@@ -29,7 +28,7 @@ class AlunoController {
       };
 
 
-      return res.json({id, nome, sobrenome, email, idade, peso, altura, created_by});
+      return res.json({ id, nome, sobrenome, email, idade, peso, altura });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(err => err.message)
@@ -40,15 +39,15 @@ class AlunoController {
   async store(req, res) {
     try {
       const aluno = await Aluno.create(req.body, req.userId)
-      const {id, nome, sobrenome, email, idade, peso, altura} = aluno
+      const { id, nome, sobrenome, email, idade, peso, altura } = aluno
 
-      return res.json({id,nome, sobrenome, email, idade, peso, altura})
+      return res.json({ id, nome, sobrenome, email, idade, peso, altura })
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(err => err.message)
       });
     }
-   };
+  };
 
   async update(req, res) {
     try {
@@ -68,9 +67,9 @@ class AlunoController {
       };
 
       const alunoAtualizado = await aluno.update(req.body);
-      const {nome, sobrenome, email, idade, peso, altura} = alunoAtualizado;
+      const { nome, sobrenome, email, idade, peso, altura } = alunoAtualizado;
 
-      return res.json({nome, sobrenome, email, idade, peso, altura});
+      return res.json({ nome, sobrenome, email, idade, peso, altura });
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(err => err.message)
