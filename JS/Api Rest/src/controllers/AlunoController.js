@@ -2,7 +2,10 @@ import Aluno from '../models/Aluno';
 
 class AlunoController {
   async index(req, res) {
-    const alunos = await Aluno.findAll({ attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'] });
+    const alunos = await Aluno.findAll({
+      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', 'created_by'],
+      where: {created_by: req.userId },
+     });
     return res.json(alunos);
   };
 
@@ -17,15 +20,16 @@ class AlunoController {
 
       const aluno = await Aluno.findByPk(id);
 
-      if (!aluno) {
+      const {nome, sobrenome, email, idade, peso, altura, created_by} = aluno
+
+      if (!aluno || created_by !== req.userId) {
         return res.status(400).json({
           errors: ['Aluno não existe'],
         });
       };
 
-      const {nome, sobrenome, email, idade, peso, altura} = aluno
 
-      return res.json({id, nome, sobrenome, email, idade, peso, altura});
+      return res.json({id, nome, sobrenome, email, idade, peso, altura, created_by});
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(err => err.message)
@@ -35,7 +39,7 @@ class AlunoController {
 
   async store(req, res) {
     try {
-      const aluno = await Aluno.create(req.body)
+      const aluno = await Aluno.create(req.body, req.userId)
       const {id, nome, sobrenome, email, idade, peso, altura} = aluno
 
       return res.json({id,nome, sobrenome, email, idade, peso, altura})
