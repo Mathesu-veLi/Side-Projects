@@ -85,5 +85,9 @@ export default class Aluno extends Model {
 
     this.addHook('beforeSave', (aluno, userId) => aluno.created_by = userId);
     return this;
+  };
+
+  static associate(models) {
+    this.hasMany(models.Photo, { foreignKey: 'aluno_id'})
   }
 }
