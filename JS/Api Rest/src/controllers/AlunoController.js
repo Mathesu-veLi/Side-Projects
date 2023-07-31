@@ -24,17 +24,24 @@ class AlunoController {
         });
       };
 
-      const aluno = await Aluno.findByPk(id);
-      const { nome, sobrenome, email, idade, peso, altura, created_by } = aluno
+      const aluno = await Aluno.findByPk(id, {
+        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', 'created_by'],
+        where: { created_by: req.userId },
+        order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
+        include: {
+          model: Photo,
+          attributes: ['filename']
+        }
+      });
 
-      if (!aluno || created_by !== req.userId) {
+      if (!aluno || aluno.created_by !== req.userId) {
         return res.status(400).json({
           errors: ['Aluno não existe'],
         });
       };
 
 
-      return res.json({ id, nome, sobrenome, email, idade, peso, altura });
+      return res.json(aluno);
     } catch (e) {
       return res.status(400).json({
         errors: e.errors.map(err => err.message)
