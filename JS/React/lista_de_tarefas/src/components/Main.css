@@ -59,12 +59,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px;
+  padding: 10px 5px;
  }
 
  .tasks li:hover {
   background-color: #51c5de;
-  transition: .5s;
+  padding: 10px;
+  transition: all .2s linear;
  }
 
  .tasks li .edit {
@@ -84,4 +85,9 @@
  .tasks li .edit, .tasks li .delete {
   cursor: pointer;
   transition: .5s;
+ }
+
+ .tasks li span {
+  display: flex;
+  align-items: center;
  }
