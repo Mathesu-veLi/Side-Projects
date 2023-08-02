@@ -29,6 +29,17 @@ export default class Main extends Component {
     });
   };
 
+
+  handleDeleteTask = (e, index) => {
+    const { tasks } = this.state;
+    let newTasks = [...tasks];
+    newTasks.splice(index, 1);
+
+    this.setState({
+      tasks: [...newTasks],
+    });
+  };
+
   render() {
     const { newTask, tasks } = this.state;
     return (
@@ -48,7 +59,10 @@ export default class Main extends Component {
               {task}
               <span>
                 <FaEdit className="edit" />
-                <FaWindowClose className="delete" />
+                <FaWindowClose
+                  className="delete"
+                  onClick={(e) => this.handleDeleteTask(e, index)}
+                />
               </span>
             </li>
           ))}
