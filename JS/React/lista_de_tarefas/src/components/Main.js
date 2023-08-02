@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 export default class Main extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      newTask: "",
+      newTask: '',
     };
 
     this.validateInput = this.validateInput.bind(this);
@@ -14,13 +14,14 @@ export default class Main extends Component {
   validateInput(e) {
     this.setState({
       newTask: e.target.value,
-    })
+    });
   }
 
   render() {
+    const { newTask } = this.state;
     return (
       <div className="main">
-        <h1>Lista de tarefas</h1>
+        <h1>{newTask}</h1>
 
         <form action="#">
           <input onChange={this.validateInput} type="text" />
