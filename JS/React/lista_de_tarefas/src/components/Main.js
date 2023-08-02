@@ -22,7 +22,7 @@ export default class Main extends Component {
     let { newTask } = this.state;
     newTask = newTask.trim();
 
-    if (tasks.indexOf(newTask) !== -1) return;
+    if (tasks.indexOf(newTask) !== -1 || newTask === "") return;
     const newTasks = [...tasks];
 
     if (index === -1) {
