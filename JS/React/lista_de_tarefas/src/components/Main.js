@@ -33,8 +33,8 @@ export default class Main extends Component {
             <li key={index}>
               {task}
               <div>
-                <FaEdit />
-                <FaWindowClose />
+                <FaEdit className="edit" />
+                <FaWindowClose className="delete" />
               </div>
             </li>
           ))}
