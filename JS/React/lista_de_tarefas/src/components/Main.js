@@ -6,6 +6,7 @@ import "./Main.css";
 export default class Main extends Component {
   state = {
     newTask: "",
+    tasks: ["Make coffee", "Drink water", "Study"],
   };
 
   handleChanged = (e) => {
@@ -15,7 +16,7 @@ export default class Main extends Component {
   };
 
   render() {
-    const { newTask } = this.state;
+    const { newTask, tasks } = this.state;
     return (
       <div className="main">
         <h1>Lista de Tarefas</h1>
@@ -26,6 +27,14 @@ export default class Main extends Component {
             <FaPlus />
           </button>
         </form>
+
+        <ul className="tasks">
+          {tasks.map((task, index) => (
+            <li key={index}>
+              {task}
+            </li>
+          ))}
+        </ul>
       </div>
     );
   }
