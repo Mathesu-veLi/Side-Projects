@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { FaPlus } from "react-icons/fa";
+import { FaEdit, FaPlus, FaWindowClose } from "react-icons/fa";
 import "./Main.css";
 
 export default class Main extends Component {
@@ -32,6 +32,10 @@ export default class Main extends Component {
           {tasks.map((task, index) => (
             <li key={index}>
               {task}
+              <div>
+                <FaEdit />
+                <FaWindowClose />
+              </div>
             </li>
           ))}
         </ul>
