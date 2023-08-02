@@ -7,6 +7,7 @@ export default class Main extends Component {
   state = {
     newTask: "",
     tasks: [],
+    index: -1,
   };
 
   handleChanged = (e) => {
@@ -17,19 +18,35 @@ export default class Main extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { tasks } = this.state;
+    const { tasks, index } = this.state;
     let { newTask } = this.state;
     newTask = newTask.trim();
 
     if (tasks.indexOf(newTask) !== -1) return;
     const newTasks = [...tasks];
 
-    this.setState({
-      tasks: [...newTasks, newTask],
-      newTask: "",
-    });
+    if (index === -1) {
+      this.setState({
+        tasks: [...newTasks, newTask],
+        newTask: "",
+      });
+    } else {
+      newTasks[index] = newTask;
+
+      this.setState({
+        tasks: [...newTasks],
+        index: -1,
+      });
+    }
   };
 
+  handleEditTask = (e, index) => {
+    const { tasks } = this.state;
+    this.setState({
+      index,
+      newTask: tasks[index],
+    });
+  };
 
   handleDeleteTask = (e, index) => {
     const { tasks } = this.state;
@@ -59,7 +76,10 @@ export default class Main extends Component {
             <li key={index}>
               {task}
               <span>
-                <FaEdit className="edit" />
+                <FaEdit
+                  className="edit"
+                  onClick={(e) => this.handleEditTask(e, index)}
+                />
                 <FaWindowClose
                   className="delete"
                   onClick={(e) => this.handleDeleteTask(e, index)}
