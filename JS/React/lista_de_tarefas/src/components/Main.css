@@ -1,5 +1,4 @@
-.main
-{
+.main {
   background-color: #eee;
   padding: 30px;
   margin: 50px auto;
@@ -50,44 +49,46 @@
   transition: none;
 }
 
-.tasks
- {
+.tasks {
   margin-top: 30px;
- }
+}
 
- .tasks li {
+.tasks li {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 5px;
- }
+}
 
- .tasks li:hover {
+.tasks li:hover {
   background-color: #51c5de;
   padding: 10px;
   transition: all .2s linear;
- }
+  
+}
 
- .tasks li .edit {
+.tasks li .edit {
   margin-right: 15px;
   color: #6b16ffcc;
- }
+}
 
- .tasks li .delete {
+.tasks li .delete {
   margin-right: 15px;
   color: #f04c;
- }
+}
 
- .tasks li:hover .edit, .tasks li:hover .delete {
+.tasks li:hover .edit,
+.tasks li:hover .delete {
   color: #000;
- }
+}
 
- .tasks li .edit, .tasks li .delete {
+.tasks li .edit,
+.tasks li .delete {
   cursor: pointer;
   transition: .5s;
- }
+}
 
- .tasks li span {
+.tasks li span {
   display: flex;
   align-items: center;
- }
+}
