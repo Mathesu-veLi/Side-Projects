@@ -26,6 +26,7 @@ export default class Main extends Component {
 
     this.setState({
       tasks: [...newTasks, newTask],
+      newTask: "",
     });
   };
 
