@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FaEdit, FaWindowClose } from "react-icons/fa";
 
+import "./style.css";
+
 export default function Tasks({ tasks, handleEditTask, handleDeleteTask }) {
   return (
     <ul className="tasks">
