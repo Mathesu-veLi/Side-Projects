@@ -13,6 +13,8 @@ export default class Main extends Component {
   };
 
   componentDidMount() {
+    document.title = "Lista de tarefas";
+
     const tasks = JSON.parse(localStorage.getItem("tasks"));
 
     if (!tasks) return;
