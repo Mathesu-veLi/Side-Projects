@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "login-api",
+    "name": "loginapi",
     "builds": [
         {
             "src": "server.js",
