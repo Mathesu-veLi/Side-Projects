@@ -1,5 +1,5 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/src" }],
+  "rewrites": [{ "source": "/(.*)", "destination": "/dist" }],
   "version": 2,
     "name": "api-rest",
     "builds": [
@@ -10,7 +10,7 @@
     ],
     "routes": [
         {
-            "src": "/src/(.*)",
+            "src": "/dist/(.*)",
             "dest": "app.js"
         }
     ]
