@@ -1,17 +1,16 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/dist" }],
   "version": 2,
     "name": "api-rest",
     "builds": [
         {
-            "src": "app.js",
+            "src": "./dist/server.js",
             "use": "@vercel/node"
         }
     ],
     "routes": [
         {
-            "src": "/dist/(.*)",
-            "dest": "app.js"
+            "src": "/(.*)",
+            "dest": "/dist/server.js"
         }
     ]
 }
