@@ -5,7 +5,7 @@ var _loginRequired = require('../middlewares/loginRequired'); var _loginRequired
 
 const router = new (0, _express.Router)();
 
-// router.get('/', userController.index);
+router.get('/', _UserController2.default.index);
 // router.get('/:id', userController.show);
 
 router.post('/', _UserController2.default.store);
