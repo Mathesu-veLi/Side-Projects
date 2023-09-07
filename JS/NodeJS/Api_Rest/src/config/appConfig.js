@@ -1,3 +1,3 @@
 export default {
-  url: 'https://api-resst.vercel.app'
+  url: 'https://api-rest-d4ob.onrender.com'
 };
