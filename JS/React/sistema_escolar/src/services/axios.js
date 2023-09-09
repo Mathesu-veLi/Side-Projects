@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 const axiosConfig = axios.create();
-axiosConfig.defaults.baseURL = 'https://api-rest-d4ob.onrender.com';
+axiosConfig.defaults.baseURL = '';
 
 export default axiosConfig;
