@@ -1,5 +1,6 @@
 import axios from 'axios';
 
-export default axios.create({
-  baseURL: 'https://curso1.otaviomiranda.com.br',
-});
+const axiosConfig = axios.create();
+axiosConfig.defaults.baseURL = 'https://api-rest-d4ob.onrender.com';
+
+export default axiosConfig;
