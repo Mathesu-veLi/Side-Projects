@@ -4,8 +4,7 @@ import Photo from '../models/Photo';
 class AlunoController {
   async index(req, res) {
     const alunos = await Aluno.findAll({
-      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', 'created_by'],
-      where: { created_by: req.userId },
+      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
       order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
       include: {
         model: Photo,
@@ -25,8 +24,7 @@ class AlunoController {
       };
 
       const aluno = await Aluno.findByPk(id, {
-        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', 'created_by'],
-        where: { created_by: req.userId },
+        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
         order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
         include: {
           model: Photo,
@@ -34,7 +32,7 @@ class AlunoController {
         }
       });
 
-      if (!aluno || aluno.created_by !== req.userId) {
+      if (!aluno) {
         return res.status(400).json({
           errors: ['Aluno não existe'],
         });

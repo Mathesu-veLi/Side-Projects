@@ -74,16 +74,10 @@
           },
         },
       },
-
-      created_by: {
-        type: _sequelize2.default.STRING,
-        defaultValue: ''
-      }
     }, {
       sequelize,
     });
 
-    this.addHook('beforeSave', (aluno, userId) => aluno.created_by = userId);
     return this;
   };
 

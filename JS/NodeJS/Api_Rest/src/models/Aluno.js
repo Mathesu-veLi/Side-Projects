@@ -74,16 +74,10 @@ export default class Aluno extends Model {
           },
         },
       },
-
-      created_by: {
-        type: Sequelize.STRING,
-        defaultValue: ''
-      }
     }, {
       sequelize,
     });
 
-    this.addHook('beforeSave', (aluno, userId) => aluno.created_by = userId);
     return this;
   };
 

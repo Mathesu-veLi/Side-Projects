@@ -4,8 +4,7 @@ var _Photo = require('../models/Photo'); var _Photo2 = _interopRequireDefault(_P
 class AlunoController {
   async index(req, res) {
     const alunos = await _Aluno2.default.findAll({
-      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', 'created_by'],
-      where: { created_by: req.userId },
+      attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
       order: [['id', 'DESC'], [_Photo2.default, 'id', 'DESC']],
       include: {
         model: _Photo2.default,
@@ -25,8 +24,7 @@ class AlunoController {
       };
 
       const aluno = await _Aluno2.default.findByPk(id, {
-        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura', 'created_by'],
-        where: { created_by: req.userId },
+        attributes: ['id', 'nome', 'sobrenome', 'email', 'idade', 'peso', 'altura'],
         order: [['id', 'DESC'], [_Photo2.default, 'id', 'DESC']],
         include: {
           model: _Photo2.default,
@@ -34,7 +32,7 @@ class AlunoController {
         }
       });
 
-      if (!aluno || aluno.created_by !== req.userId) {
+      if (!aluno) {
         return res.status(400).json({
           errors: ['Aluno não existe'],
         });
