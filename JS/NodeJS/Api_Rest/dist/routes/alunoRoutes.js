@@ -5,8 +5,8 @@ var _loginRequired = require('../middlewares/loginRequired'); var _loginRequired
 
 const router = new (0, _express.Router)();
 
-router.get('/', _loginRequired2.default, _AlunoController2.default.index);
-router.get('/:id', _loginRequired2.default, _AlunoController2.default.show);
+router.get('/', _AlunoController2.default.index);
+router.get('/:id', _AlunoController2.default.show);
 router.post('/', _loginRequired2.default, _AlunoController2.default.store);
 router.put('/:id', _loginRequired2.default, _AlunoController2.default.update);
 router.delete('/:id', _loginRequired2.default, _AlunoController2.default.delete);
