@@ -1,8 +1,8 @@
 import dotenv from 'dotenv';
 import express from 'express';
 import {resolve} from 'path';
-import cors from 'cors';
-import helmet from 'helmet';
+//import cors from 'cors';
+//import helmet from 'helmet';
 
 import homeRoutes from './routes/homeRoutes';
 import userRoutes from './routes/userRoutes';

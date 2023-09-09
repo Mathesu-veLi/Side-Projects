@@ -1,8 +1,8 @@
 "use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _dotenv = require('dotenv'); var _dotenv2 = _interopRequireDefault(_dotenv);
 var _express = require('express'); var _express2 = _interopRequireDefault(_express);
 var _path = require('path');
-var _cors = require('cors'); var _cors2 = _interopRequireDefault(_cors);
-var _helmet = require('helmet'); var _helmet2 = _interopRequireDefault(_helmet);
+//import cors from 'cors';
+//import helmet from 'helmet';
 
 var _homeRoutes = require('./routes/homeRoutes'); var _homeRoutes2 = _interopRequireDefault(_homeRoutes);
 var _userRoutes = require('./routes/userRoutes'); var _userRoutes2 = _interopRequireDefault(_userRoutes);
