@@ -31,6 +31,7 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
     'react/react-in-jsx-scope': 'off',
+    'no-unused-vars': 'off',
     'no-undef': 'off',
   },
 };
