@@ -28,7 +28,7 @@ export const AlunoContainer = styled.div`
   }
 
   #name {
-    width: 40%;
+    width: 30%;
   }
 
   .icons {
