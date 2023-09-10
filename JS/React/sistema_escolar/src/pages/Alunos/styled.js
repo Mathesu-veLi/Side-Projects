@@ -10,7 +10,7 @@ export const AlunoContainer = styled.div`
   }
 
   th {
-    padding-bottom: 15px;
+    padding: 0 10px 15px 10px;
   }
 
   td {
@@ -29,6 +29,17 @@ export const AlunoContainer = styled.div`
 
   #name {
     width: 40%;
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+  }
+
+  .icons a {
+    padding: 3px;
   }
 `;
 

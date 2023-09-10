@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { get } from 'lodash';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaEdit, FaTrash } from 'react-icons/fa';
 
 import { Container } from '../../styles/GlobalStyle';
 import { AlunoContainer, ProfilePicture } from './styled';
@@ -27,6 +28,7 @@ export default function Alunos() {
             <th>Foto</th>
             <th id="name">Nome</th>
             <th>Email</th>
+            <th>Ações</th>
           </tr>
           {alunos.map((aluno) => (
             <tr key={String(aluno.id)}>
@@ -44,6 +46,15 @@ export default function Alunos() {
               </td>
               <td>
                 <span>{aluno.email}</span>
+              </td>
+
+              <td className="icons">
+                <Link to={`aluno/${aluno.id}/edit`}>
+                  <FaEdit size={16} />
+                </Link>
+                <Link to={`aluno/${aluno.id}/delete`}>
+                  <FaTrash />
+                </Link>
               </td>
             </tr>
           ))}
