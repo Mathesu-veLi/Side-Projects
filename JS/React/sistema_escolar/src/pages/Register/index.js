@@ -1,12 +1,37 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { isEmail } from 'validator';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
+import axios from '../../services/axios';
 
 export default function Register() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    let formErros = false;
+
+    if (nome.length < 3 || nome.length > 255) {
+      formErros = true;
+      toast.error('Nome deve ter entre 3 e 255 caracteres');
+    }
+
+    if (!isEmail(email)) {
+      formErros = true;
+      toast.error('Email inválido');
+    }
+
+    if (password.length < 6 || password.length > 50) {
+      // eslint-disable-next-line no-unused-vars
+      formErros = true;
+      console.log(password.length);
+      toast.error('Senha deve ter entre 6 e 50 caracteres');
+    }
+  }
 
   return (
     <Container>
