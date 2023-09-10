@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
+import { get } from 'lodash';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
 import axios from '../../services/axios';
+import history from '../../services/history';
 
 export default function Register() {
   const [nome, setNome] = useState('');
@@ -28,8 +30,24 @@ export default function Register() {
     if (password.length < 6 || password.length > 50) {
       // eslint-disable-next-line no-unused-vars
       formErros = true;
-      console.log(password.length);
       toast.error('Senha deve ter entre 6 e 50 caracteres');
+    }
+
+    if (formErros) return;
+
+    try {
+      await axios.post('/users', {
+        nome,
+        password,
+        email,
+      });
+
+      toast.success('Você fez seu cadastro');
+      history.push('/login');
+    } catch (e) {
+      const errors = get(e, 'response.data.errors', []);
+
+      errors.map((error) => toast.error(error));
     }
   }
 
