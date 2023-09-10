@@ -16,6 +16,8 @@ export default function Alunos() {
       setAlunos(response.data);
     }
     getData();
+
+    alunos.map((aluno) => console.log(aluno));
   }, []);
 
   return (
