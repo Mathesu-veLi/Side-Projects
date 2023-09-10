@@ -3,10 +3,17 @@ import React from 'react';
 import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
 
+import { useDispatch } from 'react-redux';
 import { isEmail } from 'validator';
 import { toast } from 'react-toastify';
+import * as actions from '../../store/modules/auth/actions';
+import { get } from 'lodash';
 
-export default function Login() {
+export default function Login(props) {
+  const dispatch = useDispatch();
+
+  const prevPath = get(props, 'location.state.prevPath', '/');
+
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -26,6 +33,8 @@ export default function Login() {
     }
 
     if (formErros) return;
+
+    dispatch(actions.loginRequest({ email, password, prevPath }));
   };
 
   return (
