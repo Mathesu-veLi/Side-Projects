@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
-import { get } from 'lodash';
-import Loading from '../../components/Loading';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import * as actions from '../../store/modules/auth/actions';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
-import axios from '../../services/axios';
-import history from '../../services/history';
+import Loading from '../../components/Loading';
 
 export default function Register() {
+  const dispatch = useDispatch();
   const id = useSelector((state) => state.auth.user.id);
   const nomeStored = useSelector((state) => state.auth.user.nome);
   const emailStored = useSelector((state) => state.auth.user.email);
+  const isLoading = useSelector((state) => state.auth.isLoading);
 
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
   React.useEffect(() => {
     if (!id) return;
@@ -48,22 +47,7 @@ export default function Register() {
 
     if (formErros) return;
 
-    setIsLoading(true);
-    try {
-      await axios.post('/users', {
-        nome,
-        password,
-        email,
-      });
-      toast.success('Você fez seu cadastro');
-      setIsLoading(false);
-      history.push('/login');
-    } catch (e) {
-      const errors = get(e, 'response.data.errors', []);
-
-      errors.map((error) => toast.error(error));
-      setIsLoading(false);
-    }
+    dispatch(actions.registerRequest({ nome, email, password, id }));
   }
 
   return (
