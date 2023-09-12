@@ -40,6 +40,8 @@ export default function (state = initialState, action1) {
     }
     case types.REGISTER_SUCCESS: {
       const newState = { ...state };
+      newState.user.nome = action.nome;
+      newState.user.email = action.email;
       newState.isLoading = false;
       return newState;
     }

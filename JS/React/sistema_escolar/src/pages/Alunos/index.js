@@ -21,8 +21,6 @@ export default function Alunos() {
       setIsLoading(false);
     }
     getData();
-
-    alunos.map((aluno) => console.log(aluno));
   }, []);
 
   return (
