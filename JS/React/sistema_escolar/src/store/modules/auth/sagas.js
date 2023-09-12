@@ -46,12 +46,18 @@ function* registerRequest({ payload }) {
         password,
       });
       toast.success('Conta criada com sucesso');
-      //yield put(actions.registerSuccess({ nome, email, password }));
+      yield put(actions.registerCreatedSuccess({ nome, email, password }));
       history.push('/login');
     }
   } catch (e) {
     const errors = get(e, 'response.data.errors', []);
     const status = get(e, 'response.status', 0);
+
+    if (status === 401) {
+      toast.error('Você precisa fazer login novamente');
+      yield put(actions.loginFailure());
+      return history.push('/login');
+    }
 
     if (errors.length > 0) {
       errors.map((error) => toast.error(error));
