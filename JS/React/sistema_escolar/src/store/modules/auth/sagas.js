@@ -35,8 +35,10 @@ function* registerRequest({ payload }) {
       yield call(axios.put, '/users', {
         email,
         nome,
-        password,
+        password: password || undefined,
       });
+      toast.success('Dados da conta alterados com sucesso');
+      yield put(actions.registerSuccess({ nome, email, password }));
     }
   } catch (e) {
     const errors = get(e, 'response.data.errors', []);
@@ -47,6 +49,8 @@ function* registerRequest({ payload }) {
     } else {
       toast.error('Erro desconhecido');
     }
+
+    yield put(actions.registerFailure());
   }
 }
 

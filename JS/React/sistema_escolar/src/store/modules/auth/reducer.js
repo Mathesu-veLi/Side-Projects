@@ -28,6 +28,21 @@ export default function (state = initialState, action1) {
       return newState;
     }
 
+    case types.REGISTER_REQUEST: {
+      const newState = { ...state };
+      newState.isLoading = true;
+      return newState;
+    }
+    case types.REGISTER_FAILURE: {
+      const newState = { ...state };
+      newState.isLoading = false;
+      return newState;
+    }
+    case types.REGISTER_SUCCESS: {
+      const newState = { ...state };
+      newState.isLoading = false;
+      return newState;
+    }
     default:
       return state;
   }
