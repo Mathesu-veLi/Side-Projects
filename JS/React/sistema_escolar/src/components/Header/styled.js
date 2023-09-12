@@ -6,7 +6,7 @@ export const Nav = styled.nav`
   padding: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 
   div {
     display: flex;
