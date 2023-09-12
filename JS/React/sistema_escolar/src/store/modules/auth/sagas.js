@@ -7,7 +7,6 @@ import axios from '../../../services/axios';
 import history from '../../../services/history';
 
 function* loginRequest({ payload }) {
-  console.log(payload);
   try {
     const response = yield call(axios.post, '/tokens', payload);
     yield put(actions.loginSuccess({ ...response.data }));
