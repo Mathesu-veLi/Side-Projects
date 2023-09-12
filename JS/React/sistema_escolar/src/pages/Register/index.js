@@ -22,7 +22,10 @@ export default function Register() {
 
   React.useEffect(() => {
     if (!id) return;
-  }, []);
+
+    setNome(nomeStored);
+    setEmail(emailStored);
+  }, [emailStored, id, nomeStored]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -38,8 +41,7 @@ export default function Register() {
       toast.error('Email inválido');
     }
 
-    if (password.length < 6 || password.length > 50) {
-      // eslint-disable-next-line no-unused-vars
+    if (!id && (password.length < 6 || password.length > 50)) {
       formErros = true;
       toast.error('Senha deve ter entre 6 e 50 caracteres');
     }
@@ -68,7 +70,7 @@ export default function Register() {
     <Container>
       <Loading isLoading={isLoading} />
 
-      <h1>Criar conta</h1>
+      <h1>{id ? 'Editar dados' : 'Criar conta'}</h1>
 
       <Form onSubmit={handleSubmit}>
         <label htmlFor="nome">
@@ -99,7 +101,7 @@ export default function Register() {
           />
         </label>
 
-        <button type="submit">Criar minha conta</button>
+        <button type="submit">{id ? 'Salvar' : 'Criar minha conta'}</button>
       </Form>
     </Container>
   );
