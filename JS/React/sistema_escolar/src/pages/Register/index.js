@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../store/modules/auth/actions';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
 import Loading from '../../components/Loading';
+import * as actions from '../../store/modules/auth/actions';
 
 export default function Register() {
   const dispatch = useDispatch();

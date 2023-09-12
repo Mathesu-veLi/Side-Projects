@@ -38,7 +38,16 @@ function* registerRequest({ payload }) {
         password: password || undefined,
       });
       toast.success('Dados da conta alterados com sucesso');
-      yield put(actions.registerSuccess({ nome, email, password }));
+      yield put(actions.registerUpdatedSuccess({ nome, email, password }));
+    } else {
+      yield call(axios.post, '/users', {
+        email,
+        nome,
+        password,
+      });
+      toast.success('Conta criada com sucesso');
+      //yield put(actions.registerSuccess({ nome, email, password }));
+      history.push('/login');
     }
   } catch (e) {
     const errors = get(e, 'response.data.errors', []);
