@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { get } from 'lodash';
-import { FaUserCircle, FaEdit, FaTrash } from 'react-icons/fa';
+import { FaUserCircle, FaEdit, FaTrash, FaExclamation } from 'react-icons/fa';
 
 import { Container } from '../../styles/GlobalStyle';
 import { AlunoContainer, ProfilePicture } from './styled';
@@ -22,6 +22,13 @@ export default function Alunos() {
     }
     getData();
   }, []);
+
+  const handleDeleteAsk = (e) => {
+    e.preventDefault();
+    const exclamation = e.currentTarget.nextSibling;
+    exclamation.setAttribute('display', 'block');
+    e.currentTarget.remove();
+  };
 
   return (
     <Container>
@@ -58,9 +65,16 @@ export default function Alunos() {
                 <Link to={`aluno/${aluno.id}/edit`}>
                   <FaEdit size={16} />
                 </Link>
-                <Link to={`aluno/${aluno.id}/delete`}>
+                <Link onClick={handleDeleteAsk} to={`aluno/${aluno.id}/delete`}>
                   <FaTrash />
                 </Link>
+
+                <FaExclamation
+                  size={16}
+                  display="none"
+                  cursor="pointer"
+                  onClick={(e) => handleDelete(e, aluno.id)}
+                />
               </td>
             </tr>
           ))}
