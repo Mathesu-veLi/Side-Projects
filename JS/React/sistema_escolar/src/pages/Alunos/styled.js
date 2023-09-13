@@ -21,7 +21,7 @@ export const AlunoContainer = styled.div`
     border-top: 1px solid #afafaf;
   }
 
-  td * {
+  td *:not(svg) {
     display: flex;
     align-items: center;
     justify-content: center;

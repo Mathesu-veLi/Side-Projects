@@ -8,6 +8,7 @@ import { AlunoContainer, ProfilePicture } from './styled';
 import axios from '../../services/axios';
 
 import Loading from '../../components/Loading';
+import { toast } from 'react-toastify';
 
 export default function Alunos() {
   const [alunos, setAlunos] = useState([]);
@@ -30,6 +31,26 @@ export default function Alunos() {
     e.currentTarget.remove();
   };
 
+  const handleDelete = async (e, id, index) => {
+    e.persist();
+    try {
+      setIsLoading(true);
+      await axios.delete(`/alunos/${id}`);
+      const novosAlunos = [...alunos];
+      novosAlunos.splice(index, 1);
+      setAlunos(novosAlunos);
+      setIsLoading(false);
+    } catch (e) {
+      setIsLoading(false);
+      const status = get(e, 'response.status', 0);
+      if (status === 401) {
+        toast.error('Você precisa fazer login');
+      } else {
+        toast.error('Ocorreu um erro ao excluir aluno');
+      }
+    }
+  };
+
   return (
     <Container>
       <Loading isLoading={isLoading} />
@@ -43,7 +64,7 @@ export default function Alunos() {
             <th>Email</th>
             <th>Ações</th>
           </tr>
-          {alunos.map((aluno) => (
+          {alunos.map((aluno, index) => (
             <tr key={String(aluno.id)}>
               <td>
                 <ProfilePicture>
@@ -73,7 +94,7 @@ export default function Alunos() {
                   size={16}
                   display="none"
                   cursor="pointer"
-                  onClick={(e) => handleDelete(e, aluno.id)}
+                  onClick={(e) => handleDelete(e, aluno.id, index)}
                 />
               </td>
             </tr>
