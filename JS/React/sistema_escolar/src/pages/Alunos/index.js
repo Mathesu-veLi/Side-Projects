@@ -4,7 +4,7 @@ import { get } from 'lodash';
 import { FaUserCircle, FaEdit, FaTrash, FaExclamation } from 'react-icons/fa';
 
 import { Container } from '../../styles/GlobalStyle';
-import { AlunoContainer, ProfilePicture } from './styled';
+import { AlunoContainer, ProfilePicture, NovoAluno } from './styled';
 import axios from '../../services/axios';
 
 import Loading from '../../components/Loading';
@@ -57,6 +57,10 @@ export default function Alunos() {
     <Container>
       <Loading isLoading={isLoading} />
       <h1>Alunos</h1>
+
+      <NovoAluno to="/aluno/">
+        <button>Cadastrar novo aluno</button>
+      </NovoAluno>
 
       <AlunoContainer>
         <table>

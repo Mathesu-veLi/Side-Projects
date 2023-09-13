@@ -32,7 +32,6 @@ export default createGlobalStyle`
 
     button:hover {
     filter: brightness(90%);
-    border: 1px solid black;
   }
 
     a {
