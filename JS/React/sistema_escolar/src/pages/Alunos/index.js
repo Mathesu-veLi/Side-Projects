@@ -9,6 +9,7 @@ import axios from '../../services/axios';
 
 import Loading from '../../components/Loading';
 import { toast } from 'react-toastify';
+import history from '../../services/history';
 
 export default function Alunos() {
   const [alunos, setAlunos] = useState([]);
@@ -45,6 +46,7 @@ export default function Alunos() {
       const status = get(e, 'response.status', 0);
       if (status === 401) {
         toast.error('Você precisa fazer login');
+        return history.push('/login');
       } else {
         toast.error('Ocorreu um erro ao excluir aluno');
       }
