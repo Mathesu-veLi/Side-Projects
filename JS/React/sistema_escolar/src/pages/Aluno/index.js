@@ -1,18 +1,55 @@
 import React, { useState } from 'react';
 import { get } from 'lodash';
+import { isEmail, isInt, isFloat } from 'validator';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
+import { useParams } from 'react-router-dom';
 
-export default function Aluno({ match }) {
-  const id = get(match, 'params.id', 0);
+export default function Aluno() {
+  const { id } = useParams();
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    let formErros = false;
+
+    if (name.length < 3 || name.length > 255) {
+      formErros = true;
+      toast.error('Nome precisa ter entre 3 e 255 caracteres');
+    }
+
+    if (surname.length < 3 || surname.length > 255) {
+      formErros = true;
+      toast.error('Sobrenome precisa ter entre 3 e 255 caracteres');
+    }
+
+    if (!isEmail(email)) {
+      formErros = true;
+      toast.error('Email inválido');
+    }
+
+    if (!isInt(String(age))) {
+      toast.error('Idade inválida');
+      formErros = true;
+    }
+
+    if (!isFloat(String(weight))) {
+      toast.error('Peso inválido');
+      formErros = true;
+    }
+    if (!isFloat(String(height))) {
+      toast.error('Altura inválida');
+      formErros = true;
+    }
+  };
 
   return (
     <Container>
@@ -61,7 +98,3 @@ export default function Aluno({ match }) {
     </Container>
   );
 }
-
-Aluno.propTypes = {
-  match: PropTypes.shape({}).isRequired,
-};
