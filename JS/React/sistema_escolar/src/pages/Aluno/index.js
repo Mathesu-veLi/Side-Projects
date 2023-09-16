@@ -4,11 +4,14 @@ import { isEmail, isInt, isFloat } from 'validator';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
+import { put } from 'redux-saga/effects';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
 import Loading from '../../components/Loading';
 import axios from '../../services/axios';
+import history from '../../services/history';
+import * as actions from '../../store/modules/auth/actions';
 
 export default function Aluno() {
   const { id } = useParams();
@@ -43,41 +46,74 @@ export default function Aluno() {
         const errors = get(error, 'response.data.errors', []);
 
         if (status === 400) errors.map((error) => toast.error(error));
+        history.push('/');
       }
     })();
   }, [id]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    let formErros = false;
+    let formErrors = false;
 
     if (name.length < 3 || name.length > 255) {
-      formErros = true;
+      formErrors = true;
       toast.error('Nome precisa ter entre 3 e 255 caracteres');
     }
 
     if (surname.length < 3 || surname.length > 255) {
-      formErros = true;
+      formErrors = true;
       toast.error('Sobrenome precisa ter entre 3 e 255 caracteres');
     }
 
     if (!isEmail(email)) {
-      formErros = true;
+      formErrors = true;
       toast.error('Email inválido');
     }
 
     if (!isInt(String(age))) {
       toast.error('Idade inválida');
-      formErros = true;
+      formErrors = true;
     }
 
     if (!isFloat(String(weight))) {
       toast.error('Peso inválido');
-      formErros = true;
+      formErrors = true;
     }
     if (!isFloat(String(height))) {
       toast.error('Altura inválida');
-      formErros = true;
+      formErrors = true;
+    }
+
+    if (formErrors) return;
+
+    try {
+      setIsLoading(true);
+      if (id) {
+        await axios.put(`/alunos/${id}`, {
+          name,
+          surname,
+          email,
+          age,
+          weight,
+          height,
+        });
+        toast.success('Aluno(a) editado(a) com sucesso');
+      } else {
+        await axios.post('/alunos/', {
+          nome: name,
+          sobrenome: surname,
+          email,
+          idade: age,
+          peso: weight,
+          altura: height,
+        });
+        toast.success('Aluno(a) criado(a) com sucesso');
+        history.push('/');
+      }
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      }
     }
   };
 
