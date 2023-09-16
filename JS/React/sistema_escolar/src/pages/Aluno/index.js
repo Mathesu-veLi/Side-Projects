@@ -4,7 +4,7 @@ import { isEmail, isInt, isFloat } from 'validator';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
-import { put } from 'redux-saga/effects';
+import { useDispatch } from 'react-redux';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
@@ -14,6 +14,8 @@ import history from '../../services/history';
 import * as actions from '../../store/modules/auth/actions';
 
 export default function Aluno() {
+  const dispatch = useDispatch();
+
   const { id } = useParams();
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
@@ -115,7 +117,7 @@ export default function Aluno() {
       setIsLoading(false);
       const status = get(error, 'response.status', 0);
       if (status === 401) {
-        put(actions.loginFailure());
+        dispatch(actions.loginFailure());
         toast.error('Faça login novamente');
         history.push('/login');
       }
