@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { get } from 'lodash';
 import { isEmail, isInt, isFloat } from 'validator';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
+import { useParams } from 'react-router-dom';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
-import { useParams } from 'react-router-dom';
+import Loading from '../../components/Loading';
+import axios from '../../services/axios';
 
 export default function Aluno() {
   const { id } = useParams();
@@ -16,6 +18,34 @@ export default function Aluno() {
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (!id) return;
+
+    (async function () {
+      try {
+        setIsLoading(true);
+        const { data } = await axios.get(`/alunos/${id}`);
+        const Photo = get(data, 'Photos[0].url', '');
+
+        setName(data.nome);
+        setSurname(data.sobrenome);
+        setEmail(data.email);
+        setAge(data.idade);
+        setWeight(data.peso);
+        setHeight(data.altura);
+
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        const status = get(error, 'response.status', 0);
+        const errors = get(error, 'response.data.errors', []);
+
+        if (status === 400) errors.map((error) => toast.error(error));
+      }
+    })();
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -53,6 +83,7 @@ export default function Aluno() {
 
   return (
     <Container>
+      <Loading isLoading={isLoading} />
       <h1>{id ? 'Editar aluno' : 'Novo aluno'}</h1>
 
       <Form onSubmit={handleSubmit}>
