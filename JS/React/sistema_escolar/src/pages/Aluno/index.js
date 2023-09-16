@@ -113,6 +113,11 @@ export default function Aluno() {
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
+      const status = get(error, 'response.status', 0);
+      if (status === 401) {
+        put(actions.loginFailure());
+        toast.error('Faça login novamente');
+        history.push('/login');
       }
     }
   };
