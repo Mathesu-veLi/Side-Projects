@@ -101,7 +101,7 @@ export default function Aluno() {
         });
         toast.success('Aluno(a) editado(a) com sucesso');
       } else {
-        await axios.post('/alunos/', {
+        const { data } = await axios.post('/alunos/', {
           nome: name,
           sobrenome: surname,
           email,
@@ -110,7 +110,7 @@ export default function Aluno() {
           altura: height,
         });
         toast.success('Aluno(a) criado(a) com sucesso');
-        history.push('/');
+        history.push(`/aluno/${data.id}/edit`);
       }
       setIsLoading(false);
     } catch (error) {
