@@ -16,13 +16,12 @@ export default function Alunos() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    async function getData() {
+    (async function () {
       setIsLoading(true);
       const response = await axios.get('/alunos');
       setAlunos(response.data);
       setIsLoading(false);
-    }
-    getData();
+    })();
   }, []);
 
   const handleDeleteAsk = (e) => {
