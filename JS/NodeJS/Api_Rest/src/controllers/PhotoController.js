@@ -27,8 +27,6 @@ class PhotoController {
           errors: ['ID do aluno não existe']
         });
       };
-
-
     });
   };
 };
