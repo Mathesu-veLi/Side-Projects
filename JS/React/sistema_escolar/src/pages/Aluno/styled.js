@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { primaryColor } from '../../config/colors';
 
 export const Form = styled.form`
   margin-top: 20px;
@@ -18,11 +19,28 @@ export const ProfilePicture = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 10px 0 30px 0;
+  margin: 20px 0 50px 0;
+  position: relative;
 
   img {
     border-radius: 50%;
     width: 180px;
     height: 180px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: none;
+    position: absolute;
+    color: rgba(0, 0, 0, 0);
+  }
+  a:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
   }
 `;

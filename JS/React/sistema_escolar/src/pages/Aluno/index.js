@@ -3,9 +3,9 @@ import { get } from 'lodash';
 import { isEmail, isInt, isFloat } from 'validator';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { FaUserCircle } from 'react-icons/fa';
+import { FaUserCircle, FaEdit } from 'react-icons/fa';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form, ProfilePicture } from './styled';
@@ -135,6 +135,9 @@ export default function Aluno() {
       {id && (
         <ProfilePicture>
           {photo ? <img src={photo} alt={name} /> : <FaUserCircle size={180} />}
+          <Link to={`/photos/${id}`}>
+            <FaEdit size={24} />
+          </Link>
         </ProfilePicture>
       )}
 
