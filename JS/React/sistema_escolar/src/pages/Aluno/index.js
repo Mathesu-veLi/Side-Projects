@@ -26,6 +26,8 @@ export default function Aluno() {
   const [height, setHeight] = useState('');
   const [photo, setPhoto] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [photoChange, setPhotoChange] = useState(false);
+  const [file, setFile] = useState({});
 
   useEffect(() => {
     if (!id) return;
@@ -57,10 +59,12 @@ export default function Aluno() {
   }, [id]);
 
   const handleChange = (e) => {
-    const photo = e.target.files[0];
-    const photoURL = URL.createObjectURL(photo);
+    const file1 = e.target.files[0];
+    const photoURL = URL.createObjectURL(file1);
 
     setPhoto(photoURL);
+    setPhotoChange(true);
+    setFile(file1);
   };
 
   const handleSubmit = async (e) => {
@@ -109,6 +113,26 @@ export default function Aluno() {
           weight,
           height,
         });
+
+        if (photoChange) {
+          const formData = new FormData();
+          formData.append('aluno_id', id);
+          formData.append('file', file);
+
+          try {
+            await axios.post('/photos/', formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            });
+          } catch (error) {
+            setIsLoading(false);
+            const { status } = get(error, 'response', '');
+            toast.error(error);
+
+            if (status === 401) dispatch(actions.loginFailure());
+          }
+        }
         toast.success('Aluno(a) editado(a) com sucesso');
       } else {
         const { data } = await axios.post('/alunos/', {
@@ -119,6 +143,7 @@ export default function Aluno() {
           peso: weight,
           altura: height,
         });
+
         toast.success('Aluno(a) criado(a) com sucesso');
         history.push(`/aluno/${data.id}/edit`);
       }
