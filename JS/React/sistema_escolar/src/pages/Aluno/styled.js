@@ -28,7 +28,7 @@ export const ProfilePicture = styled.div`
     height: 180px;
   }
 
-  a {
+  form {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,10 +37,18 @@ export const ProfilePicture = styled.div`
     border-radius: 50%;
     border: none;
     position: absolute;
-    color: rgba(0, 0, 0, 0);
-  }
-  a:hover {
-    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
     color: #fff;
+  }
+  form:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 100%;
+  }
+  input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
   }
 `;

@@ -56,6 +56,13 @@ export default function Aluno() {
     })();
   }, [id]);
 
+  const handleChange = (e) => {
+    const photo = e.target.files[0];
+    const photoURL = URL.createObjectURL(photo);
+
+    setPhoto(photoURL);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formErrors = false;
@@ -135,9 +142,11 @@ export default function Aluno() {
       {id && (
         <ProfilePicture>
           {photo ? <img src={photo} alt={name} /> : <FaUserCircle size={180} />}
-          <Link to={`/photos/${id}`}>
+          <form>
             <FaEdit size={24} />
-          </Link>
+            <br />
+            <input onChange={handleChange} type="file"></input>
+          </form>
         </ProfilePicture>
       )}
 
