@@ -13,3 +13,16 @@ export const Form = styled.form`
     padding: 0 10px;
   }
 `;
+
+export const ProfilePicture = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px 0 30px 0;
+
+  img {
+    border-radius: 50%;
+    width: 180px;
+    height: 180px;
+  }
+`;

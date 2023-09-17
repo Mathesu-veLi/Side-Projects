@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { FaUserCircle } from 'react-icons/fa';
 
 import { Container } from '../../styles/GlobalStyle';
-import { Form } from './styled';
+import { Form, ProfilePicture } from './styled';
 import Loading from '../../components/Loading';
 import axios from '../../services/axios';
 import history from '../../services/history';
@@ -23,6 +24,7 @@ export default function Aluno() {
   const [age, setAge] = useState('');
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
+  const [photo, setPhoto] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -33,6 +35,7 @@ export default function Aluno() {
         setIsLoading(true);
         const { data } = await axios.get(`/alunos/${id}`);
         const Photo = get(data, 'Photos[0].url', '');
+        setPhoto(Photo);
 
         setName(data.nome);
         setSurname(data.sobrenome);
@@ -128,6 +131,12 @@ export default function Aluno() {
     <Container>
       <Loading isLoading={isLoading} />
       <h1>{id ? 'Editar aluno' : 'Novo aluno'}</h1>
+
+      {id && (
+        <ProfilePicture>
+          {photo ? <img src={photo} alt={name} /> : <FaUserCircle size={180} />}
+        </ProfilePicture>
+      )}
 
       <Form onSubmit={handleSubmit}>
         <input
