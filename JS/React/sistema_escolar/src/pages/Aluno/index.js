@@ -27,6 +27,7 @@ export default function Aluno() {
   const [photo, setPhoto] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [photoChange, setPhotoChange] = useState(false);
+  const [prevPhoto, setPrevPhoto] = useState(false);
   const [file, setFile] = useState({});
 
   useEffect(() => {
@@ -61,6 +62,9 @@ export default function Aluno() {
   const handleChange = (e) => {
     const file1 = e.target.files[0];
     const photoURL = URL.createObjectURL(file1);
+    if (photo != '') {
+      setPrevPhoto(true);
+    }
 
     setPhoto(photoURL);
     setPhotoChange(true);
@@ -120,11 +124,19 @@ export default function Aluno() {
           formData.append('file', file);
 
           try {
-            await axios.post('/photos/', formData, {
-              headers: {
-                'Content-Type': 'multipart/form-data',
-              },
-            });
+            if (prevPhoto) {
+              await axios.put('/photos/', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                },
+              });
+            } else {
+              await axios.post('/photos/', formData, {
+                headers: {
+                  'Content-Type': 'multipart/form-data',
+                },
+              });
+            }
           } catch (error) {
             setIsLoading(false);
             const { status } = get(error, 'response', '');
