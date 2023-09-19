@@ -61,6 +61,30 @@ class PhotoController {
       }
     });
   }
+  delete(req, res) {
+    return upload(req, res, async (e) => {
+      if (e) {
+        return res.status(400).json({
+          erros: [e.code],
+        });
+      }
+
+      try {
+        const photo = await Photo.findOne({
+          where: {
+            aluno_id: req.body.aluno_id,
+          },
+        });
+        await photo.destroy();
+        return res.json('Foto deletada com sucesso');
+      } catch (e) {
+        console.log(e);
+        return res.status(400).json({
+          errors: ['ID do aluno não existe'],
+        });
+      }
+    });
+  }
 }
 
 export default new PhotoController();

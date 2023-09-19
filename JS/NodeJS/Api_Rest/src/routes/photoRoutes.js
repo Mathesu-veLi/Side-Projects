@@ -8,5 +8,6 @@ const router = new Router();
 
 router.post('/', loginRequired, photoController.store);
 router.put('/', loginRequired, photoController.update);
+router.delete('/', loginRequired, photoController.delete);
 
 export default router;
