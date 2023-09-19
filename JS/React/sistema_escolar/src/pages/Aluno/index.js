@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { get } from 'lodash';
 import { isEmail, isInt, isFloat } from 'validator';
-import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
 import { useParams, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { FaUserCircle, FaEdit } from 'react-icons/fa';
+import { FaUserCircle, FaEdit, FaTrash } from 'react-icons/fa';
 
 import { Container } from '../../styles/GlobalStyle';
 import { Form, ProfilePicture } from './styled';
@@ -39,7 +38,6 @@ export default function Aluno() {
         const { data } = await axios.get(`/alunos/${id}`);
         const Photo = get(data, 'Photos[0].url', '');
         setPhoto(Photo);
-
         setName(data.nome);
         setSurname(data.sobrenome);
         setEmail(data.email);
@@ -184,6 +182,9 @@ export default function Aluno() {
             <br />
             <input onChange={handleChange} type="file"></input>
           </form>
+          <button onClick={handleDelete}>
+            <FaTrash size={18} />
+          </button>
         </ProfilePicture>
       )}
 

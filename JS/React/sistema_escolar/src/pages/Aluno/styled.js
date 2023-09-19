@@ -51,4 +51,16 @@ export const ProfilePicture = styled.div`
     height: 100%;
     border-radius: 50%;
   }
+
+  button {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    bottom: -25px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+  }
 `;
