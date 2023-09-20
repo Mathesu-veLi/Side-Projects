@@ -69,6 +69,20 @@ export default function Aluno() {
     setFile(file1);
   };
 
+  const handleDelete = async (e) => {
+    setIsLoading(true);
+    let aluno_id = id;
+    console.log(aluno_id);
+    console.log(id);
+    await axios.delete('/photos', {
+      data: {
+        aluno_id,
+      },
+    });
+    setPhoto('');
+    setIsLoading(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     let formErrors = false;
