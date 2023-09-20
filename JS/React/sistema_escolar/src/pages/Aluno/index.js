@@ -27,6 +27,7 @@ export default function Aluno() {
   const [isLoading, setIsLoading] = useState(false);
   const [photoChange, setPhotoChange] = useState(false);
   const [prevPhoto, setPrevPhoto] = useState(false);
+  const [deletePhoto, setDeletePhoto] = useState(false);
   const [file, setFile] = useState({});
 
   useEffect(() => {
@@ -67,19 +68,6 @@ export default function Aluno() {
     setPhoto(photoURL);
     setPhotoChange(true);
     setFile(file1);
-  };
-
-  const handleDelete = async (e) => {
-    setIsLoading(true);
-    let aluno_id = id;
-    await axios.delete('/photos', {
-      data: {
-        aluno_id,
-      },
-    });
-    setPhoto('');
-    setFile({});
-    setIsLoading(false);
   };
 
   const handleSubmit = async (e) => {
@@ -129,7 +117,7 @@ export default function Aluno() {
           height,
         });
 
-        if (photoChange) {
+        if (photoChange && !deletePhoto) {
           const formData = new FormData();
           formData.append('aluno_id', id);
           formData.append('file', file);
@@ -155,6 +143,14 @@ export default function Aluno() {
 
             if (status === 401) dispatch(actions.loginFailure());
           }
+        } else if (deletePhoto && file) {
+          let aluno_id = id;
+          await axios.delete('/photos', {
+            data: {
+              aluno_id,
+            },
+          });
+          setIsLoading(false);
         }
         toast.success('Aluno(a) editado(a) com sucesso');
       } else {
@@ -195,7 +191,12 @@ export default function Aluno() {
             <br />
             <input onChange={handleChange} type="file"></input>
           </form>
-          <button onClick={handleDelete}>
+          <button
+            onClick={() => {
+              setDeletePhoto(true);
+              setPhoto('');
+            }}
+          >
             <FaTrash size={18} />
           </button>
         </ProfilePicture>
