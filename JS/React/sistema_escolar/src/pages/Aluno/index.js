@@ -80,6 +80,7 @@ export default function Aluno() {
       },
     });
     setPhoto('');
+    setFile({});
     setIsLoading(false);
   };
 
