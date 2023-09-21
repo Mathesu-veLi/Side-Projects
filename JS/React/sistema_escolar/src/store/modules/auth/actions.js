@@ -35,9 +35,9 @@ export function registerFailure(payload) {
   };
 }
 
-export function registerUpdatedSuccess(payload) {
+export function updatedSuccess(payload) {
   return {
-    type: types.REGISTER_UPDATED_SUCCESS,
+    type: types.UPDATED_SUCCESS,
     payload,
   };
 }
