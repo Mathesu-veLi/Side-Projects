@@ -7,8 +7,9 @@ import { Container } from '../../styles/GlobalStyle';
 import { Form } from './styled';
 import Loading from '../../components/Loading';
 import * as actions from '../../store/modules/auth/actions';
+import history from '../../services/history';
 
-export default function Register() {
+export default function Edit() {
   const dispatch = useDispatch();
   const id = useSelector((state) => state.auth.user.id);
   const nomeStored = useSelector((state) => state.auth.user.nome);
@@ -20,7 +21,10 @@ export default function Register() {
   const [password, setPassword] = useState('');
 
   React.useEffect(() => {
-    if (!id) return;
+    if (!id) {
+      history.push('/login');
+      toast.warning('Faça login para editar os dados');
+    }
 
     setNome(nomeStored);
     setEmail(emailStored);
@@ -54,7 +58,7 @@ export default function Register() {
     <Container>
       <Loading isLoading={isLoading} />
 
-      <h1>{id ? 'Editar dados' : 'Criar conta'}</h1>
+      <h1>Editar dados</h1>
 
       <Form onSubmit={handleSubmit}>
         <label htmlFor="nome">
@@ -85,7 +89,7 @@ export default function Register() {
           />
         </label>
 
-        <button type="submit">{id ? 'Salvar' : 'Criar minha conta'}</button>
+        <button type="submit">Salvar</button>
       </Form>
     </Container>
   );

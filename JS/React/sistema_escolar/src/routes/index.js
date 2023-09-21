@@ -3,7 +3,7 @@ import { Switch } from 'react-router-dom';
 
 import MyRoute from './MyRoute';
 
-import Register from '../pages/Register';
+import Edit from '../pages/Edit';
 import Login from '../pages/Login';
 import Aluno from '../pages/Aluno';
 import Alunos from '../pages/Alunos';
@@ -18,7 +18,7 @@ export default function Router() {
       <MyRoute exact path="/aluno/" component={Aluno} isClosed={true} />
       <MyRoute exact path="/fotos/:id" component={Photos} isClosed={true} />
       <MyRoute exact path="/login" component={Login} />
-      <MyRoute exact path="/register" component={Register} />
+      <MyRoute exact path="/edit" component={Edit} />
       <MyRoute path="*" component={Page404} />
     </Switch>
   );
