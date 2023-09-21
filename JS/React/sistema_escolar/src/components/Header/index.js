@@ -26,24 +26,23 @@ export default function Header() {
   return (
     <Nav>
       <Link to="/">
-        <FaHome size={24} />
+        <FaHome size={24} title="Página inicial" />
       </Link>
       <div>
-        <Link to="/edit">
-          <FaUserAlt size={24} />
-        </Link>
-
         {isLoggedIn ? (
-          <Link onClick={handleLogout} to="/logout">
-            <FaPowerOff size={24} />
-          </Link>
+          <>
+            <Link to="/edit">
+              <FaUserAlt size={24} title="Editar dados" />
+            </Link>
+            <Link onClick={handleLogout} to="/logout">
+              <FaPowerOff size={24} title="Desconectar" />
+            </Link>
+          </>
         ) : (
           <Link to="/login">
-            <FaSignInAlt size={24} />
+            <FaSignInAlt size={24} title="Criar conta ou fazer login" />
           </Link>
         )}
-
-        {isLoggedIn && <FaCircle size={24} color="#afa" />}
       </div>
     </Nav>
   );
