@@ -29,7 +29,7 @@ export default function Header() {
         <FaHome size={24} />
       </Link>
       <div>
-        <Link to="/register">
+        <Link to="/edit">
           <FaUserAlt size={24} />
         </Link>
 
