@@ -6,6 +6,8 @@ var _PhotoController = require('../controllers/PhotoController'); var _PhotoCont
 
 const router = new (0, _express.Router)();
 
-router.post('/', _loginRequired2.default, _PhotoController2.default.store)
+router.post('/', _loginRequired2.default, _PhotoController2.default.store);
+router.put('/', _loginRequired2.default, _PhotoController2.default.update);
+router.delete('/', _loginRequired2.default, _PhotoController2.default.delete);
 
 exports. default = router;
