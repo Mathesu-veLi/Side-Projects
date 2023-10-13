@@ -30,6 +30,8 @@ while True:
                 registred_password)
 
             print('Account registered successfully')
+        case 2:
+            manage_accounts.read_accounts(accountFolderPath)
         case 4:
             break
 
