@@ -1,4 +1,5 @@
 import os
+from modules import utils
 
 
 print('Welcome to the account manager!', '\n')
@@ -10,6 +11,9 @@ while True:
     print('Type 4 to exit the program', '\n')
 
     option = utils.validate_number('Type an option: ')
+    while option > 4 or option < 1:
+        print('Type a number from 1 to 3')
+        option = utils.validate_number('Type an option: ')
 
     accountFolderPath = os.path.join('./', 'accounts')
 
