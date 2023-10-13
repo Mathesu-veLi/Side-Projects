@@ -23,6 +23,12 @@ while True:
             registred_email = str(input('Enter the email address you registered on this website: '))
             registred_password = str(input('Enter the password you entered: '))
 
+            manage_accounts.save_account(
+                accountFolderPath,
+                website_name,
+                registred_email,
+                registred_password)
+
             print('Account registered successfully')
         case 4:
             break
