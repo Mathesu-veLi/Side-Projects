@@ -15,7 +15,7 @@ while True:
         print('Type a number from 1 to 3')
         option = utils.validate_number('Type an option: ')
 
-    accountFolderPath = os.path.join('./', 'accounts')
+    accounts_folder_path = os.path.join('./', 'accounts')
 
     match(option):
         case 1:
@@ -24,7 +24,7 @@ while True:
             registred_password = str(input('Enter the password you entered: '))
 
             manage_accounts.save_account(
-                accountFolderPath,
+                accounts_folder_path,
                 website_name,
                 registred_email,
                 registred_password)
@@ -32,7 +32,7 @@ while True:
             print('Account registered successfully')
         case 2:
             print('Saved accounts: ')
-            
+
             try:
                 files_count = -1
                 for iterator, file_name in enumerate(os.listdir(accountFolderPath)):
@@ -43,10 +43,10 @@ while True:
                     print()
                     website_number = utils.validate_number(
                         'Enter the number of the site you want to see your account details for: ')
-                    
+
                     if website_number <= files_count and website_number >= 0:
                         break
-                    
+
                     print('Enter a valid number!')
 
                 manage_accounts.read_accounts(accountFolderPath, website_number)
