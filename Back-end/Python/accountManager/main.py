@@ -51,6 +51,29 @@ while True:
                 manage_accounts.read_accounts(accounts_folder_path, website_number)
             except FileNotFoundError:
                 print('Register an account to view registered accounts', '\n')
+        case 3:
+            try:
+                files_count = utils.list_and_enumerate_files(accounts_folder_path)
+                if files_count == -1:
+                    raise FileNotFoundError()
+
+                while True:
+                    print()
+                    website_number = utils.validate_number(
+                        'Enter the number of the site you want to delete your account data from: ')
+
+                    if website_number <= files_count and website_number >= 0:
+                        break
+
+                    print('Enter a valid number!')
+
+                manage_accounts.delete_accounts(
+                    accounts_folder_path,
+                    website_number)
+
+                print('Account data log successfully deleted', '\n')
+            except FileNotFoundError:
+                print('Register an account to delete a registred account', '\n')
         case 4:
             break
 

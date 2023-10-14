@@ -28,7 +28,7 @@ def save_account(account_folder_path: str, website_name: str, registred_email: s
 
 
 def read_accounts(account_folder_path: str, website_number: int):
-    """Reads existing json files in the given path
+    """Reads the json file indicated by website_number
 
     Args:
         account_folder_path (str): Path to search for account files
@@ -43,3 +43,16 @@ def read_accounts(account_folder_path: str, website_number: int):
                 print('\n', data['name'].center(55))
                 print(data['email'].ljust(35), end='')
                 print(data['password'].rjust(20), '\n')
+
+
+def delete_accounts(account_folder_path: str, website_number: int):
+    """Deletes the json file indicated by website_number
+
+    Args:
+        account_folder_path (str): Path to search for account files
+        website_number (int): Number that the website appears in the file search system, used to identify it
+    """
+
+    for iterator,  file_name in enumerate(os.listdir(account_folder_path)):
+        if iterator == website_number:
+            os.remove(f'{account_folder_path}/{file_name}')
