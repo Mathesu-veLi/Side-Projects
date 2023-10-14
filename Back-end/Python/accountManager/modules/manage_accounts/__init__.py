@@ -27,20 +27,19 @@ def save_account(account_folder_path: str, website_name: str, registred_email: s
             json.dump(data_registered_on_the_website, file)
 
 
-def read_accounts(account_folder_path: str):
+def read_accounts(account_folder_path: str, website_number: int):
     """Reads existing json files in the given path
 
     Args:
         account_folder_path (str): Path to search for account files
+        website_number (int): Number that the website appears in the file search system, used to identify it
     """
 
-    if not os.listdir(account_folder_path):
-        print('Register an account to view registered accounts')
+    for iterator,  file_name in enumerate(os.listdir(account_folder_path)):
+        if iterator == website_number:
+            with open(f'{account_folder_path}/{file_name}', 'r', encoding='utf-8') as file:
+                data = json.load(file)
 
-    for file_name in os.listdir(account_folder_path):
-        with open(f'{account_folder_path}/{file_name}', 'r', encoding='utf-8') as file:
-            data = json.load(file)
-
-            print('\n', data['name'].center(55))
-            print(data['email'].ljust(35), end='')
-            print(data['password'].rjust(20))
+                print('\n', data['name'].center(55))
+                print(data['email'].ljust(35), end='')
+                print(data['password'].rjust(20), '\n')

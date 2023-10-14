@@ -31,8 +31,28 @@ while True:
 
             print('Account registered successfully')
         case 2:
-            manage_accounts.read_accounts(accountFolderPath)
+            print('Saved accounts: ')
+            
+            try:
+                files_count = -1
+                for iterator, file_name in enumerate(os.listdir(accountFolderPath)):
+                    print(f'{iterator}: {file_name.replace('.json', '')}')
+                    files_count += 1
+
+                while True:
+                    print()
+                    website_number = utils.validate_number(
+                        'Enter the number of the site you want to see your account details for: ')
+                    
+                    if website_number <= files_count and website_number >= 0:
+                        break
+                    
+                    print('Enter a valid number!')
+
+                manage_accounts.read_accounts(accountFolderPath, website_number)
+            except FileNotFoundError:
+                print('Register an account to view registered accounts', '\n')
         case 4:
             break
 
-print('Come back often!')
+print('\n', 'Come back often!')
