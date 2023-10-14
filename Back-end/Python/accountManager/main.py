@@ -34,10 +34,9 @@ while True:
             print('Saved accounts: ')
 
             try:
-                files_count = -1
-                for iterator, file_name in enumerate(os.listdir(accountFolderPath)):
-                    print(f'{iterator}: {file_name.replace('.json', '')}')
-                    files_count += 1
+                files_count = utils.list_and_enumerate_files(accounts_folder_path)
+                if files_count == -1:
+                    raise FileNotFoundError()
 
                 while True:
                     print()
@@ -49,7 +48,7 @@ while True:
 
                     print('Enter a valid number!')
 
-                manage_accounts.read_accounts(accountFolderPath, website_number)
+                manage_accounts.read_accounts(accounts_folder_path, website_number)
             except FileNotFoundError:
                 print('Register an account to view registered accounts', '\n')
         case 4:
