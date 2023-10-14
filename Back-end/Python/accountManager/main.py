@@ -1,5 +1,5 @@
 import os
-from modules import utils
+from modules import utils, manage_accounts
 
 
 print('Welcome to the account manager!', '\n')
