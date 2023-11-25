@@ -8,3 +8,10 @@ regExs = {
     "phone number": r"^(\+?\d{2})?\s?(\()?(\d{2,3})?(\))?\s?(9?\d{4})\-?(\d{4})$",
     "email": r"^[\w+\.]+@([\w-]+\.)+[\w-]{2,4}$"
 }
+
+if re.search(regExs["cpf"], pixKey):
+    print(f'a chave {pixKey} é um cpf')
+elif re.search(regExs["phone number"], pixKey):
+    print(f'a chave {pixKey} é um número de telefone')
+elif re.search(regExs["email"], pixKey):
+    print(f'a chave {pixKey} é um email')
