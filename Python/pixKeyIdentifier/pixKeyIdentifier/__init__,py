@@ -10,7 +10,9 @@ regExs = {
 }
 
 if re.search(regExs["cpf"], pixKey):
-    print(f'a chave {pixKey} é um cpf')
+    formattedPixKey = re.sub(
+        r"^(\d{3})\.?(\d{3})\.?(\d{3})\-?(\d{2})$", r"\1.\2.\3-\4", pixKey)
+    print(f'a chave {formattedPixKey} é um cpf')
 elif re.search(regExs["phone number"], pixKey):
     print(f'a chave {pixKey} é um número de telefone')
 elif re.search(regExs["email"], pixKey):
