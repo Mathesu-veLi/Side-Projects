@@ -1,7 +1,7 @@
 import re
 
 print('Welcome to the Pix Key Indentifier! \n')
-pixKey = str(input('Enter your pix key here: '))
+pix_key = str(input('Enter your pix key here: '))
 
 regExs = {
     "cpf": r"^([\d+]{3}(\.)?){2}\d{3}(\-)?\d{2}$",
@@ -9,11 +9,14 @@ regExs = {
     "email": r"^[\w+\.]+@([\w-]+\.)+[\w-]{2,4}$"
 }
 
-if re.search(regExs["cpf"], pixKey):
-    formattedPixKey = re.sub(
-        r"^(\d{3})\.?(\d{3})\.?(\d{3})\-?(\d{2})$", r"\1.\2.\3-\4", pixKey)
-    print(f'a chave {formattedPixKey} é um cpf')
-elif re.search(regExs["phone number"], pixKey):
-    print(f'a chave {pixKey} é um número de telefone')
-elif re.search(regExs["email"], pixKey):
-    print(f'a chave {pixKey} é um email')
+if re.search(regExs["cpf"], pix_key):
+    formatted_pix_key = re.sub(
+        r"^(\d{3})\.?(\d{3})\.?(\d{3})\-?(\d{2})$", r"\1.\2.\3-\4", pix_key)
+    print(f'a chave {formatted_pix_key} é um cpf')
+elif re.search(regExs["phone number"], pix_key):
+    
+    print(f'a chave {pix_key} é um número de telefone')
+elif re.search(regExs["email"], pix_key):
+    print(f'a chave {pix_key} é um email')
+
+# TODO: Print pix key formatted based on the key name of the object in which the pix key qualifies
