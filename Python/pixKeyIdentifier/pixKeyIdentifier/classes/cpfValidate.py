@@ -13,7 +13,7 @@ class Cpf:
             cpf_without_verification_digits, 1)
         validated_cpf = self.discover_verification_digit(validated_cpf, 0)
         
-        return validated_cpf
+        return True if validated_cpf == self.formatted_cpf else False
 
     def discover_verification_digit(self, cpf, first_or_second_digit):
         total = 0
@@ -26,7 +26,3 @@ class Cpf:
             total = 0
 
         return cpf + str(total)
-
-
-cpf = Cpf('864.200.505-02')
-print(cpf.validate())
