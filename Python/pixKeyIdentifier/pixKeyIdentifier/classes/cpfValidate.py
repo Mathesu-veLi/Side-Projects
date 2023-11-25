@@ -9,26 +9,23 @@ class Cpf:
     def validate(self):
         cpf_without_verification_digits = self.formatted_cpf[:-2]
 
-        total = 0
-        iterator = 1
-        for c in cpf_without_verification_digits:
-            total += int(c) * iterator
-            iterator += 1
-        total %= 11
-        if total > 9:
-            total = 0
-        cpf_without_verification_digits += str(total)
+        validated_cpf = self.discover_verification_digit(
+            cpf_without_verification_digits, 1)
+        validated_cpf = self.discover_verification_digit(validated_cpf, 0)
+        
+        return validated_cpf
 
+    def discover_verification_digit(self, cpf, first_or_second_digit):
         total = 0
-        iterator = 0
-        for c in cpf_without_verification_digits:
+        iterator = first_or_second_digit
+        for c in cpf:
             total += int(c) * iterator
             iterator += 1
         total %= 11
         if total > 9:
             total = 0
-        cpf_without_verification_digits += str(total)
-        return cpf_without_verification_digits
+
+        return cpf + str(total)
 
 
 cpf = Cpf('864.200.505-02')
