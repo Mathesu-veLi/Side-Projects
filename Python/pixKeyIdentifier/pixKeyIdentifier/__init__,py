@@ -6,14 +6,14 @@ print('Welcome to the Pix Key Indentifier! \n')
 pix_key = str(input('Enter your pix key here: '))
 
 regExs = {
-    "cpf": r"^([\d+]{3}(\.)?){2}\d{3}(\-)?\d{2}$",
+    "cpf": r"^(\d{3})\.?(\d{3})\.?(\d{3})\-?(\d{2})$",
     "phone number": r"^(\+?\d{2})?\s?(\()?(\d{2,3})?(\))?\s?(9?\d{4})\-?(\d{4})$",
     "email": r"^[\w+\.]+@([\w-]+\.)+[\w-]{2,4}$"
 }
 
 if re.search(regExs["cpf"], pix_key) and Cpf(pix_key).validate():
     formatted_pix_key = re.sub(
-        r"^(\d{3})\.?(\d{3})\.?(\d{3})\-?(\d{2})$", r"\1.\2.\3-\4", pix_key)
+        regExs["cpf"], r"\1.\2.\3-\4", pix_key)
     print(f'a chave {formatted_pix_key} é um cpf')
     
 elif re.search(regExs["phone number"], pix_key):
