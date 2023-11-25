@@ -1,5 +1,7 @@
 import re
 
+from classes.cpfValidate import Cpf
+
 print('Welcome to the Pix Key Indentifier! \n')
 pix_key = str(input('Enter your pix key here: '))
 
@@ -9,13 +11,14 @@ regExs = {
     "email": r"^[\w+\.]+@([\w-]+\.)+[\w-]{2,4}$"
 }
 
-if re.search(regExs["cpf"], pix_key):
+if re.search(regExs["cpf"], pix_key) and Cpf(pix_key).validate():
     formatted_pix_key = re.sub(
         r"^(\d{3})\.?(\d{3})\.?(\d{3})\-?(\d{2})$", r"\1.\2.\3-\4", pix_key)
     print(f'a chave {formatted_pix_key} é um cpf')
-elif re.search(regExs["phone number"], pix_key):
     
+elif re.search(regExs["phone number"], pix_key):
     print(f'a chave {pix_key} é um número de telefone')
+    
 elif re.search(regExs["email"], pix_key):
     print(f'a chave {pix_key} é um email')
 
