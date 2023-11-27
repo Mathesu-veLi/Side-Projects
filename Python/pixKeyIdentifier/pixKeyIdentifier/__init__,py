@@ -7,7 +7,7 @@ pix_key = str(input('Enter your pix key here: '))
 
 regExs = {
     "cpf": r"^(\d{3})\.?(\d{3})\.?(\d{3})\-?(\d{2})$",
-    "phone number": r"^(\+?\d{2})?\s?(\()?(\d{2,3})?(\))?\s?(9?\d{4})\-?(\d{4})$",
+    "phone number": r"^(\+?\d{1,3}(\-\d{3})?)?\s?(\()?(\d{2,3})(\))?\s?(9?\d{4})\-?(\d{4})$",
     "email": r"^[\w+\.]+@([\w-]+\.)+[\w-]{2,4}$"
 }
 
@@ -15,11 +15,11 @@ if re.search(regExs["cpf"], pix_key) and Cpf(pix_key).validate():
     formatted_pix_key = re.sub(
         regExs["cpf"], r"\1.\2.\3-\4", pix_key)
     print(f'The key {formatted_pix_key} is a cpf')
-    
+
 elif re.search(regExs["phone number"], pix_key):
     print(f'The key {pix_key} is a phone number')
-    
+
 elif re.search(regExs["email"], pix_key):
     print(f'The key {pix_key} is a email')
 
-# TODO: Print pix key formatted based on the key name of the object in which the pix key qualifies
+# TODO: Format the phone number and the email
