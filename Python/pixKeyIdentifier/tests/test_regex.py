@@ -19,3 +19,13 @@ def test_cpf_regex():
         assert not re.search(regExs["cpf"],
                              c), "CPF regex not valid! (Should be False)"
 
+def test_phone_number_regex():
+    correct_cpf_sintax = ['(071) 98247-6463', '+55 41 8247-6862', '75935056363', '+5-555 71 985076263']
+    incorrect_cpf_sintax = ['7877 6789098-674365', '985036364', '+43 985076863']
+
+    for c in correct_cpf_sintax:
+        assert re.search(regExs["phone number"],
+                         c), "Phone number regex not valid! (Should be True)"
+    for c in incorrect_cpf_sintax:
+        assert not re.search(regExs["phone number"],
+                             c), "Phone number regex not valid! (Should be False)"
