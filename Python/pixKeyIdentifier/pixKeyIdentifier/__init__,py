@@ -21,5 +21,5 @@ elif re.search(regExs["phone number"], pix_key):
 
 elif re.search(regExs["email"], pix_key):
     print(f'The key {pix_key} is a email')
-
-# TODO: Format the phone number and the email
+else:
+    print("I don't recognize the key entered")
