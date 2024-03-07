@@ -16,3 +16,6 @@
 [submodule "JS/upload.ai"]
 	path = JS/upload.ai
 	url = https://github.com/Mathesu-veLi/upload.ai.git
+[submodule "JS/accountz"]
+	path = JS/accountz
+	url = https://github.com/Mathesu-veLi/accountz.git
