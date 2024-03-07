@@ -4,9 +4,6 @@
 [submodule "JS/Lista-de-tarefas"]
 	path = JS/Lista-de-tarefas
 	url = https://github.com/Mathesu-veLi/Lista-de-tarefas.git
-[submodule "JS/Api-rest"]
-	path = JS/Api-rest
-	url = https://github.com/Mathesu-veLi/Api-rest.git
 [submodule "JS/Phonebook"]
 	path = JS/Phonebook
 	url = https://github.com/Mathesu-veLi/Phonebook.git
