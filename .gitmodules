@@ -1,0 +1,3 @@
+[submodule "JS/school-api"]
+	path = JS/school-api
+	url = https://github.com/Mathesu-veLi/school-api.git
