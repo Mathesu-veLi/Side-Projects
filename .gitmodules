@@ -7,3 +7,6 @@
 [submodule "JS/dev-toolkit"]
 	path = JS/dev-toolkit
 	url = https://github.com/Mathesu-veLi/dev-toolkit.git
+[submodule "JS/ouv-costumes"]
+	path = JS/ouv-costumes
+	url = https://github.com/Mathesu-veLi/ouv-costumes.git
