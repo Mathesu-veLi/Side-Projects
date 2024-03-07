@@ -1,6 +1,3 @@
 [submodule "JS/Sistema-escolar"]
 	path = JS/Sistema-escolar
 	url = https://github.com/Mathesu-veLi/Sistema-escolar.git
-[submodule "JS/Phonebook"]
-	path = JS/Phonebook
-	url = https://github.com/Mathesu-veLi/Phonebook.git
