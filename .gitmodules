@@ -10,3 +10,6 @@
 [submodule "JS/ouv-costumes"]
 	path = JS/ouv-costumes
 	url = https://github.com/Mathesu-veLi/ouv-costumes.git
+[submodule "JS/pomodoro"]
+	path = JS/pomodoro
+	url = https://github.com/Mathesu-veLi/pomodoro.git
