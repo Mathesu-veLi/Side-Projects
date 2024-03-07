@@ -13,3 +13,6 @@
 [submodule "JS/pomodoro"]
 	path = JS/pomodoro
 	url = https://github.com/Mathesu-veLi/pomodoro.git
+[submodule "JS/upload.ai"]
+	path = JS/upload.ai
+	url = https://github.com/Mathesu-veLi/upload.ai.git
