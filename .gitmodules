@@ -19,3 +19,6 @@
 [submodule "JS/accountz"]
 	path = JS/accountz
 	url = https://github.com/Mathesu-veLi/accountz.git
+[submodule "JS/phonebook.git"]
+	path = JS/phonebook.git
+	url = https://github.com/Mathesu-veLi/phonebook.git
