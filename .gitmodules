@@ -4,3 +4,6 @@
 [submodule "JS/todo-api"]
 	path = JS/todo-api
 	url = https://github.com/Mathesu-veLi/todo-app.git
+[submodule "JS/dev-toolkit"]
+	path = JS/dev-toolkit
+	url = https://github.com/Mathesu-veLi/dev-toolkit.git
