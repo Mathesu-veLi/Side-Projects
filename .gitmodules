@@ -28,3 +28,6 @@
 [submodule "Python/listaDeCompras"]
 	path = Python/listaDeCompras
 	url = https://github.com/Mathesu-veLi/listaDeCompras.git
+[submodule "Python/sendTrojan"]
+	path = Python/sendTrojan
+	url = https://github.com/Mathesu-veLi/sendTrojan.git
