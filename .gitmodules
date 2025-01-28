@@ -25,3 +25,6 @@
 [submodule "Python/accountManager"]
 	path = Python/accountManager
 	url = https://github.com/Mathesu-veLi/accountManager.git
+[submodule "Python/listaDeCompras"]
+	path = Python/listaDeCompras
+	url = https://github.com/Mathesu-veLi/listaDeCompras.git
